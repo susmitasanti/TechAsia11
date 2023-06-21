@@ -12,7 +12,7 @@ const { setSessionEmail } = require('./sessionHandler.js');
 router.post('/', async function (req, res, next) {
   const result = await db.query(
     // `SELECT * FROM registration WHERE email='${req.query.email}';`
-    `UPDATE registration SET mac_id='${req.query.macid}' WHERE email='${req.query.email}';`
+    `UPDATE registration SET mac_id='${req.query.mac_id}' WHERE email='${req.query.email}';`
   );
   res.json({message: "Success"})
 
