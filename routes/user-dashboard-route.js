@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db');
 const { getSessionEmail } = require('./sessionHandler.js');
+const {requireLogin} = require('./middleware')
 
 // router.get('/', function(req, res, next){
 //         console.log(getSessionEmail());
 //         res.render('D:/TechAsia11/views/dashboard.ejs', { sessionEmail: getSessionEmail() });
 // })
 
-router.get('/', async function (req, res, next) {
+router.get('/', requireLogin, async function (req, res, next) {
   // if (getSessionEmail() != 'Admin@gmail.com') {
     const result = await db.query(
       `SELECT * FROM registration WHERE email='${getSessionEmail()}';`

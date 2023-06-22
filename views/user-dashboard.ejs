@@ -146,7 +146,10 @@
         <a href="#">Graphs</a>
       </div>
     </div>
-    <a href="#" target="blank" id="Profile"><i class="fa fa-fw fa-user"></i> Profile</a>
+    <!-- <a href="#" target="blank" id="Profile" action="/logout" method="GET" enctype="text/plain"><i class="fa fa-fw fa-user"></i> Profile</a> -->
+    <form id="Profile" action="/logout" method="GET" enctype="text/plain">
+    <button>Logout</button>
+    </form>
   </div>
   <div class="container">
     <div class="upper">
@@ -196,6 +199,30 @@
       </table>
     </div>
   </div>
+
+<script>
+document.getElementById("Profile").addEventListener("click", async function (event) {
+
+fetch(`http://localhost:3000/logout`, {
+				method: "POST", // Replace with the appropriate HTTP method
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+				.then(response => response.json())
+				.then(data => {
+					// // Handle the API response data
+					// console.log("Hulloo")
+					console.log("Tata");
+				})
+				.catch(error => {
+					// // Handle any errors that occurred during the API request
+					console.log("Bubyee Error")
+
+					console.error(error);
+				});
+		})
+  </script>
 
 </body>
 

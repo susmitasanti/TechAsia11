@@ -7,7 +7,6 @@ const bcrypt = require('bcryptjs')
 
 router.get('/', function (req, res, next) {
   res.render('D:/TechAsia11/views/registration.ejs')
-  // next();
 });
 
 router.post('/', async function (req, res, next) {

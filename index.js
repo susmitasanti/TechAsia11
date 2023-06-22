@@ -18,14 +18,23 @@ var update = require("./routes/update-route");
 var deleteUser=require("./routes/delete-route")
 var admin_login = require("./routes/admin-login-route")
 var admin_dashboard = require("./routes/admin-dashboard-route")
+var forgot_password = require("./routes/forgot-password-route")
+var reset_password = require("./routes/reset-password-route")
+var logout = require("./routes/logout-route")
+var statistics = require("./routes/statistics-route")
+var admin_profile=require("./routes/admin-profile-routes")
+
+
 
 app.use(express.json());
-app.use(session({
-  secret: "Susmita@2004",
-  cookie: {
-    sameSite: 'strict'
-  }
-}))
+
+app.use(
+  session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.use(express.static('views'));
 app.set('view engine', 'ejs');
@@ -41,6 +50,12 @@ app.use('/update', update)
 app.use('/delete', deleteUser)
 app.use('/admin', admin_login)
 app.use('/admin-dashboard', admin_dashboard)
+app.use('/forgot', forgot_password)
+app.use('/reset/xyz', reset_password)
+app.use('/logout', logout)
+app.use('/statistics', statistics)
+app.use('/admin-profile', admin_profile)
+
 
 
 /* Error handler middleware */
@@ -54,3 +69,5 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+

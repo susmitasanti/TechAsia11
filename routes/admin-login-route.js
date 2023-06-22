@@ -26,7 +26,13 @@ router.post('/', async function (req, res, next) {
     // console.log(passwordCompare)
     if (req.query.password===user.password) {
       console.log("Logged in.");
-      res.render('D:/TechAsia11/views/admin-dashboard.ejs')
+      const username = req.query.username;
+      req.session.username = username;
+      req.session.authorized = true;
+      setSessionEmail(username);
+      console.log("req.session.username:", req.session.username); // Check the value
+      res.redirect('/admin-dashboard');
+      // res.render('D:/TechAsia11/views/admin-dashboard.ejs')
 
     //   const email = req.query.email;
     //   req.session.email = email;

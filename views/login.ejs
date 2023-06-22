@@ -17,7 +17,7 @@
 
 		body {
 			font-family: 'Oswald', sans-serif;
-			background-image: url(technology-background_23-2148458951.avif);
+			background-image: url(D:/TechAsia11/views/technology-background_23-2148458951.avif);
 			background-repeat: no-repeat;
 			background-size: cover;
 			display: flex;
@@ -178,13 +178,13 @@
 
 			<form action="/dashboard" method="GET" enctype="text/plain">
 				<h1>Login</h1>
-				<input type="email" placeholder="Email" id="email" />
+				<input type="email" placeholder="Email" id="email" required >
 				<div class="password-container">
-					<input type="password" placeholder="Password" id="password">
+					<input type="password" placeholder="Password" id="password" required>
 					<i class="fa-solid fa-eye" id="eye"></i>
 				</div>
 
-				<a href="">Forgot your password?</a>
+				<a href="http://localhost:3000/forgot">Forgot your password?</a>
 				<div class="btn">
 					<button id="login">Sign In</button>
 				</div>
@@ -228,7 +228,15 @@
 
 					console.error(error);
 				});
-		})
+		});
+
+		const passwordInput = document.querySelector("#password")
+const eye = document.querySelector("#eye")
+eye.addEventListener("click", function(){
+    this.classList.toggle("fa-eye-slash")
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+    passwordInput.setAttribute("type", type)
+  });
 	</script>
 </body>
 

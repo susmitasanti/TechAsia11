@@ -30,6 +30,10 @@ router.post('/', async function (req, res, next) {
       req.session.email = email;
       req.session.authorized = true;
       setSessionEmail(email);
+      console.log("req.session.email:", req.session.email); // Check the value
+      res.redirect('/dashboard');
+      
+
     }
     else {
       console.log("Login fail.");

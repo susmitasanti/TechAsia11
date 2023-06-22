@@ -178,9 +178,9 @@
 
 			<form action="/admin-dashboard" method="GET" enctype="text/plain">
 				<h1>Login</h1>
-				<input type="text" placeholder="Username" id="username" />
+				<input type="text" placeholder="Username" id="username" required />
 				<div class="password-container">
-					<input type="password" placeholder="Password" id="password">
+					<input type="password" placeholder="Password" id="password" required>
 					<i class="fa-solid fa-eye" id="eye"></i>
 				</div>
 
@@ -227,8 +227,14 @@
 					console.error(error);
 				});
 
-		})
+		});
+			const passwordInput = document.querySelector("#password")
+			const eye = document.querySelector("#eye")
+			eye.addEventListener("click", function(){
+			this.classList.toggle("fa-eye-slash")
+			const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+			passwordInput.setAttribute("type", type)
+		});
 	</script>
 </body>
-
 </html>
