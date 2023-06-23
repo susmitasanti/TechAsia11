@@ -1,13 +1,13 @@
 var express = require('express');
-const app = express();
+// const app = express();
 var router = express.Router();
 var db = require('../db');
 const bcrypt = require('bcryptjs')
 const { setSessionEmail } = require('./sessionHandler.js');
 
-
+var email=''
 router.get('/', function (req, res, next) {
-  res.render('D:/TechAsia11/views/login.ejs')
+  res.render('D:/TechAsia11/views/login.ejs', {alert: false})
 });
 router.post('/', async function (req, res, next) {
   const result = await db.query(
@@ -26,14 +26,12 @@ router.post('/', async function (req, res, next) {
     console.log(passwordCompare)
     if (passwordCompare) {
       console.log("Logged in.");
-      const email = req.query.email;
+      email = req.query.email;
       req.session.email = email;
       req.session.authorized = true;
       setSessionEmail(email);
       console.log("req.session.email:", req.session.email); // Check the value
-      res.redirect('/dashboard');
-      
-
+      res.redirect('/user-profile');
     }
     else {
       console.log("Login fail.");

@@ -136,6 +136,7 @@
 <body>
   <div class="navbar">
     <img src="techAsia-LOGO_horizontal1028.png" alt="">
+    <a href="http://localhost:3000/dashboard" target="blank"><i class="fa fa-fw fa-search"></i>Dashboard</a>
     <a href="#" target="blank"><i class="fa fa-fw fa-search"></i> Test Data</a>
     <div class="dropdown">
       <button class="dropbtn"><i class="fa fa-fw fa-calculator"></i> Activity
@@ -164,10 +165,8 @@
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
+            <th>Count</th>
+            <th>Session Time</th>
             <th>MAC ID</th>
 
 
@@ -179,20 +178,15 @@
           <% users.forEach(function(user) { %>
             <tr>
               <td>
-                <%= user.id %>
+                <%= user.count %>
               </td>
               <td>
-                <%= user.name %>
-              </td>
-              <td>
-                <%= user.email %>
-              </td>
-              <td>
-                <%= user.phone %>
+                <%= user.session_time %>
               </td>
               <td>
                 <%= user.mac_id %>
               </td>
+             
             </tr>
             <% }); %>
         </tbody>

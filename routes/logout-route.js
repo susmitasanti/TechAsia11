@@ -8,7 +8,7 @@ const { setSessionEmail } = require('./sessionHandler.js');
 
 
 router.get('/', function (req, res, next) {
-  res.render('D:/TechAsia11/views/login.ejs')
+  res.redirect('/login')
 });
 
 router.post('/', async function (req, res, next) {

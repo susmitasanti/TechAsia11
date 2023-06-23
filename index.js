@@ -1,4 +1,6 @@
 const express = require("express");
+const bodyParser = require('body-parser');
+
 const app = express();
 const port = 3000;
 const cors = require("cors");
@@ -10,6 +12,8 @@ app.use(
 );
 const session = require('express-session');
 const ejs = require('ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 var register = require("./routes/registration-route");
 var login = require("./routes/login-route");
@@ -23,7 +27,8 @@ var reset_password = require("./routes/reset-password-route")
 var logout = require("./routes/logout-route")
 var statistics = require("./routes/statistics-route")
 var admin_profile=require("./routes/admin-profile-routes")
-
+var graph = require("./routes/graph-route")
+var user_profile = require("./routes/user-profile-route")
 
 
 app.use(express.json());
@@ -40,7 +45,8 @@ app.use(express.static('views'));
 app.set('view engine', 'ejs');
 
 app.get("/", (req, res) => {
-  res.render('D:/TechAsia11/views/login.ejs')
+  console.log('Started')
+  res.redirect('/login')
 });
 
 app.use('/register', register)
@@ -55,6 +61,8 @@ app.use('/reset/xyz', reset_password)
 app.use('/logout', logout)
 app.use('/statistics', statistics)
 app.use('/admin-profile', admin_profile)
+app.use('/graph', graph)
+app.use('/user-profile', user_profile)
 
 
 
