@@ -12,16 +12,16 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', async function (req, res, next) {
-    // app.get('/logout', (req, res) => {
-        req.session.destroy((err) => {
-          if (err) {
-            console.log(err);
-          }
-          console.log("Chala byee")
-          // res.render('D:/TechAsia11/views/login.ejs')
-          // res.redirect('http:/localhost:3000/logout')
-        });
-      // });
+  // app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log("Chala byee")
+    // res.render('D:/TechAsia11/views/login.ejs')
+    // res.redirect('http:/localhost:3000/logout')
+  });
+  // });
 
 });
 module.exports = router;

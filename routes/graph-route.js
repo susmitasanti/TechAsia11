@@ -2,33 +2,38 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db');
 const Chart = require('chart.js');
-// const canvas = document.getElementById('myChart');
-// const ctx = canvas.getContext('2d');
+const { getSessionEmail } = require('./sessionHandler.js');
+const { setDate, getDate } = require("./current-dateHandler");
 
-router.get('/', function (req, res, next) {
+
+router.get('/', async function (req, res, next) {
+
+
+  const result = await db.query(
+    `  SELECT DISTINCT statistics.mac_id FROM registration INNER JOIN statistics ON registration.phone = statistics.phone1 WHERE registration.email='${getSessionEmail()}';`
+  )
+
+  const graphResults = [];
+
+  for (const row of result) {
+    const macId = row.mac_id;
+    const graph = await db.query(
+      `SELECT * FROM statistics WHERE phone1=
+            (SELECT phone
+              FROM registration as r
+              WHERE r.email='${getSessionEmail()}') AND date='${getDate()}' AND mac_id='${macId}';`
+    );
+
+    graphResults.push(graph);
+  }
+
+  console.log(result)
+  console.log(graphResults)
+  res.render('D:/TechAsia11/views/graph.ejs', { data: graphResults, date: getDate(), users: result });
 
 
 });
 router.post('/', async function (req, res, next) {
-    // const result = await db.query(
-    //     `SELECT on_off, time FROM statistics WHERE email='${req.query.email}';`
-    // );
-    const query = 'SELECT on_off, time FROM statistics WHERE date=2023-06-23';
-    db.query(query, (err, results) => {
-        if (err) {
-            console.error('Error executing query:', err);
-            return;
-        }
-        console.log('Fetched data:', results);
-    });
-
-    const labels = results.map((row) => row.on_off);
-    const data = results.map((row) => row.time);
-
-    res.render('D:/TechAsia11/views/myChart.ejs', {})
-
-
-
 
 });
 

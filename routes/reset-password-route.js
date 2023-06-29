@@ -12,12 +12,11 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', async function (req, res, next) {
-    const result = await db.query(
-      `SELECT * FROM registration WHERE email='${req.query.email}';`
-    );
-  
-    
-  
-  });
-  module.exports = router;
-  
+  const result = await db.query(
+    `SELECT * FROM registration WHERE email='${req.query.email}';`
+  );
+
+
+
+});
+module.exports = router;

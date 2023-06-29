@@ -15,7 +15,7 @@ router.post('/', async function (req, res, next) {
     // `UPDATE registration SET mac_id='${req.query.macid}' WHERE email='${req.query.email}';`
     `DELETE FROM registration WHERE email='${req.query.email}';`
   );
-  res.json({message: "Deleted User"})
+  res.json({ message: "Deleted User" })
 
 });
 module.exports = router;

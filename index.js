@@ -19,17 +19,19 @@ var register = require("./routes/registration-route");
 var login = require("./routes/login-route");
 var dashboard = require("./routes/user-dashboard-route");
 var update = require("./routes/update-route");
-var deleteUser=require("./routes/delete-route")
+var deleteUser = require("./routes/delete-route")
 var admin_login = require("./routes/admin-login-route")
 var admin_dashboard = require("./routes/admin-dashboard-route")
 var forgot_password = require("./routes/forgot-password-route")
 var reset_password = require("./routes/reset-password-route")
 var logout = require("./routes/logout-route")
 var statistics = require("./routes/statistics-route")
-var admin_profile=require("./routes/admin-profile-routes")
+var admin_profile = require("./routes/admin-profile-routes")
 var graph = require("./routes/graph-route")
 var user_profile = require("./routes/user-profile-route")
-
+var set_date = require("./routes/date-route")
+var admin_set_date = require("./routes/admin-date-route")
+var admin_graph = require("./routes/admin-graph-route")
 
 app.use(express.json());
 
@@ -63,7 +65,9 @@ app.use('/statistics', statistics)
 app.use('/admin-profile', admin_profile)
 app.use('/graph', graph)
 app.use('/user-profile', user_profile)
-
+app.use('/setDate', set_date)
+app.use('/admin-setDate',admin_set_date)
+app.use('/admin-graph',admin_graph)
 
 
 /* Error handler middleware */

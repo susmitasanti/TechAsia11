@@ -14,7 +14,7 @@ router.post('/', async function (req, res, next) {
     // `SELECT * FROM registration WHERE email='${req.query.email}';`
     `UPDATE registration SET mac_id='${req.query.mac_id}' WHERE email='${req.query.email}';`
   );
-  res.json({message: "Success"})
+  res.json({ message: "Success" })
 
 });
 module.exports = router;

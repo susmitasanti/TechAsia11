@@ -5,9 +5,9 @@ var db = require('../db');
 const bcrypt = require('bcryptjs')
 const { setSessionEmail } = require('./sessionHandler.js');
 
-var email=''
+var email = ''
 router.get('/', function (req, res, next) {
-  res.render('D:/TechAsia11/views/login.ejs', {alert: false})
+  res.render('D:/TechAsia11/views/login.ejs', { alert: false })
 });
 router.post('/', async function (req, res, next) {
   const result = await db.query(

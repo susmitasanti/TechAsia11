@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', async function (req, res, next) {
-  
+
   const result = await db.query(
     `INSERT INTO statistics(phone1, on_off, count, session_time, mac_id, time, date)
      VALUES 
