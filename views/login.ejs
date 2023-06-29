@@ -18,7 +18,7 @@
 
 		body {
 			font-family: 'Oswald', sans-serif;
-			background-image: url(D:/TechAsia11/views/technology-background_23-2148458951.avif);
+			background-image: url(technology-background_23-2148458951.avif);
 			background-repeat: no-repeat;
 			background-size: cover;
 			display: flex;
@@ -49,7 +49,7 @@
 
 		a {
 			color: #0a44b9;
-			font-size: 14px;
+			font-size: 15px;
 			text-decoration: none;
 			margin: 15px 0;
 		}
@@ -64,7 +64,7 @@
 			padding: 12px 45px;
 			letter-spacing: 1px;
 			text-transform: uppercase;
-			margin-top: 15px;
+			margin-top: 8px;
 		}
 
 		button:active {
@@ -170,6 +170,10 @@
 			cursor: pointer;
 			color: rgb(135, 151, 185);
 		}
+
+		span {
+			font-size: 17px;
+		}
 	</style>
 </head>
 
@@ -177,83 +181,114 @@
 	<% if (alert) { %>
 		<div class="alert alert-danger" id="alert" role="alert">
 			Please enter Valid Credentials
-		  </div>
-    <% } else { %>
-       
-    <% } %>
-		
-	<div class="container" id="container">
-		<div class="form-container sign-in-container">
-
-			<form action="/user-profile" method="GET" enctype="text/plain">
-				<h1>Login</h1>
-				<input type="email" placeholder="Email" id="email" required >
-				<div class="password-container">
-					<input type="password" placeholder="Password" id="password" required>
-					<i class="fa-solid fa-eye" id="eye"></i>
-				</div>
-
-				<a href="http://localhost:3000/forgot">Forgot your password?</a>
-				<div class="btn">
-					<button id="login">Sign In</button>
-				</div>
-				<span>
-					<p>Don't have an account? <a href="http://localhost:3000/register">Sign up</a></p>
-					<p>Are you the Admin? <a href="http://localhost:3000/admin">Admin</a></p>
-
-				</span>
 		</div>
-		
-		<div class="overlay-container">
-			<div class="overlay">
-				<div class="overlay-panel overlay-right">
-					<h1>Welcome back</h1>
-					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut ullam similique voluptatum minima?
-						Aperiam dolor, excepturi repellendus maiores aliquam numquam ut odio nostrum perferendis
-						consequatur, voluptatem ipsum delectus laudantium quia.</p>
+		<% } else { %>
+
+			<% } %>
+
+				<div class="container" id="container">
+					<div class="form-container sign-in-container">
+
+						<form action="/user-profile" method="GET" enctype="text/plain">
+							<h1>Login</h1>
+							<input type="email" placeholder="Email" id="email" required>
+							<div class="password-container">
+								<input type="password" placeholder="Password" id="password" required>
+								<i class="fa-solid fa-eye" id="eye"></i>
+							</div>
+							<span for="rememberPassword">Remember Password <input type="checkbox"
+									id="rememberPassword"></span>
+
+
+							<a href="http://localhost:3000/forgot">Forgot your password?</a>
+							<div class="btn">
+								<button id="login" onclick="savePassword()">Sign In</button>
+							</div>
+
+							<span>Don't have an account? <a href="http://localhost:3000/register">Sign up</a></span>
+							<span>Are you the Admin? <a href="http://localhost:3000/admin">Admin</a></span>
+
+					</div>
+
+					<div class="overlay-container">
+						<div class="overlay">
+							<div class="overlay-panel overlay-right">
+								<h1>Welcome back</h1>
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut ullam similique
+									voluptatum minima?
+									Aperiam dolor, excepturi repellendus maiores aliquam numquam ut odio nostrum
+									perferendis
+									consequatur, voluptatem ipsum delectus laudantium quia.</p>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<script>
-		
-		document.getElementById("login").addEventListener("click", async function (event) {
-			const email1 = document.getElementById("email").value;
-			const password1 = document.getElementById("password").value;
+				<script>
 
-			fetch(`http://localhost:3000/login?email=${email1}&password=${password1}`, {
-				method: "POST", // Replace with the appropriate HTTP method
-				headers: {
-					"Content-Type": "application/json",
-				},
-			})
-				.then(response => response.json())
-				.then(data => {
-					// Handle the API response data
-					console.log("Hulloo")
-					console.log(data);
-				})
-				.catch(error => {
-					// Handle any errors that occurred during the API request
-					console.log("Bubyee")
+					document.getElementById("login").addEventListener("click", async function (event) {
+						const email1 = document.getElementById("email").value;
+						const password1 = document.getElementById("password").value;
 
-					console.error(error);
-				});
-		});
+						fetch(`http://localhost:3000/login?email=${email1}&password=${password1}`, {
+							method: "POST", // Replace with the appropriate HTTP method
+							headers: {
+								"Content-Type": "application/json",
+							},
+						})
+							.then(response => response.json())
+							.then(data => {
+								// Handle the API response data
+								console.log("Hulloo")
+								console.log(data);
+							})
+							.catch(error => {
+								// Handle any errors that occurred during the API request
+								console.log("Bubyee")
 
-		const passwordInput = document.querySelector("#password")
-const eye = document.querySelector("#eye")
-eye.addEventListener("click", function(){
-    this.classList.toggle("fa-eye-slash")
-    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
-    passwordInput.setAttribute("type", type)
-  });
+								console.error(error);
+							});
+					});
 
-  setTimeout(function() {
-      document.getElementById("alert").style.display = 'none';
-    }, 2000);
-   
-	</script>
+					const passwordInput = document.querySelector("#password")
+					const eye = document.querySelector("#eye")
+					eye.addEventListener("click", function () {
+						this.classList.toggle("fa-eye-slash")
+						const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+						passwordInput.setAttribute("type", type)
+					});
+
+					setTimeout(function () {
+						document.getElementById("alert").style.display = 'none';
+					}, 2000);
+
+
+					// Function to save the password in localStorage when the "Remember Password" checkbox is checked
+					function savePassword() {
+						const passwordInput = document.getElementById("password");
+						const rememberCheckbox = document.getElementById("rememberPassword");
+
+						if (rememberCheckbox.checked) {
+							const password = passwordInput.value;
+							localStorage.setItem("rememberedPassword", password);
+						}
+					}
+
+					// Function to load the saved password from localStorage and autofill the password field
+					function loadPassword() {
+						const passwordInput = document.getElementById("password");
+						const rememberedPassword = localStorage.getItem("rememberedPassword");
+
+						if (rememberedPassword) {
+							passwordInput.value = rememberedPassword;
+						}
+					}
+
+					// Call the loadPassword function when the page loads to check if a password is saved
+					window.addEventListener("load", loadPassword);
+
+
+
+				</script>
 </body>
 
 </html>
