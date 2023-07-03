@@ -10,6 +10,9 @@
     /* @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); */
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
+    body {
+      background-color: rgb(214, 225, 234);
+    }
 
     .navbar {
       width: 100%;
@@ -34,19 +37,13 @@
       height: 50px;
     }
 
-    /* The dropdown container */
-    .dropdown {
-      float: left;
-      overflow: hidden;
-    }
 
     .dropdown2 {
       float: right;
       margin-right: 30px;
     }
 
-    /* Dropdown button */
-    .dropdown .dropbtn,
+
     .dropdown2 .dropbtn2 {
       font-size: 23px;
       border: none;
@@ -61,13 +58,12 @@
     /* Add a red background color to navbar links on hover */
     .navbar a:hover,
     .navbar p:hover,
-    .dropdown:hover .dropbtn,
     .dropdown2:hover .dropbtn2 {
       background-color: red;
     }
 
     /* Dropdown content (hidden by default) */
-    .dropdown-content,
+
     .dropdown-content2 {
       display: none;
       position: absolute;
@@ -78,7 +74,7 @@
     }
 
     /* Links inside the dropdown */
-    .dropdown-content a,
+
     .dropdown-content2 a {
       float: none;
       color: black;
@@ -90,13 +86,13 @@
     }
 
     /* Add a grey background color to dropdown links on hover */
-    .dropdown-content a:hover,
+
     .dropdown-content2 a:hover {
       background-color: #ddd;
     }
 
     /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content,
+
     .dropdown2:hover .dropdown-content2 {
 
       display: block;
@@ -109,7 +105,7 @@
         0 10px 10px rgba(0, 0, 0, 0.22);
       position: relative;
       margin-top: 12px;
-      overflow: auto;
+      overflow: hidden;
       min-height: 120px;
       max-height: 120px;
       padding: 10px;
@@ -119,6 +115,7 @@
       text-align: center;
       color: black;
       margin-top: 3px;
+      font-size: 28px;
     }
 
     .lower {
@@ -129,8 +126,7 @@
       position: relative;
       overflow: auto;
       margin-top: 20px;
-      min-height: 440px;
-      max-height: 440px;
+      height: auto;
       padding: 10px;
     }
 
@@ -203,8 +199,15 @@
       border: 1.5px solid #22196b;
     }
 
-    #graph {
+    #graph,#activity {
       border: 2px solid #22196b;
+      background-color: #22196b;
+      color: white;
+      cursor: pointer;
+    }
+
+    #logout {
+      font-size: 17px;
       background-color: #22196b;
       color: white;
       cursor: pointer;
@@ -216,7 +219,7 @@
   <div class="navbar">
     <img src="techAsia-LOGO_horizontal1028.png" alt="">
     <a><i class="fa fa-fw fa-search"></i> Users Data</a>
-    <a><i class="fa fa-fw fa-calculator"></i> Activity</a>
+    <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a>
     <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a>
     <div class="dropdown2">
       <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
@@ -249,6 +252,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Activity</th>
             <th>Graph</th>
             <th>Function</th>
           </tr>
@@ -271,6 +275,13 @@
               </td>
               <td>
                 <div style="text-align:center;">
+                  <form action="/admin-viewActivity?email=<%= user.email %>" method="POST">
+                <button onclick="viewActivity(this)" email="<%= user.email %>" id="activity">Activity</button>
+              </form>
+            </div>
+              </td>
+              <td>
+                <div style="text-align:center;">
                   <form action="/admin-graph?email=<%= user.email %>" method="POST">
                     <button onclick="viewGraph(this)" email="<%= user.email %>" id="graph">Graph</button>
                   </form>
@@ -288,6 +299,22 @@
   </div>
 
   <script>
+    function viewActivity(){
+      fetch(`http://localhost:3000/admin-viewActivity?email=${userEmail}`, {
+        method: "GET", // Replace with the appropriate HTTP method
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          // Handle any errors that occurred during the API request
+          console.error(error);
+        });
+    }
     function viewGraph(button) {
       var userEmail = button.getAttribute("email")
       fetch(`http://localhost:3000/admin-graph?email=${userEmail}`, {

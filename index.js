@@ -32,6 +32,8 @@ var user_profile = require("./routes/user-profile-route")
 var set_date = require("./routes/date-route")
 var admin_set_date = require("./routes/admin-date-route")
 var admin_graph = require("./routes/admin-graph-route")
+var admin_activity = require("./routes/admin-activity-route")
+var admin_viewActivity=require("./routes/admin-viewActivity-route")
 
 app.use(express.json());
 
@@ -68,7 +70,8 @@ app.use('/user-profile', user_profile)
 app.use('/setDate', set_date)
 app.use('/admin-setDate',admin_set_date)
 app.use('/admin-graph',admin_graph)
-
+app.use('/admin-activity',admin_activity)
+app.use('/admin-viewActivity', admin_viewActivity)
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {

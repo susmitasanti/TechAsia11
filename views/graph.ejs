@@ -59,7 +59,7 @@
         0 10px 10px rgba(0, 0, 0, 0.22);
       position: relative;
       margin-top: 12px;
-      overflow: auto;
+      overflow: hidden;
       min-height: 120px;
       max-height: 120px;
       padding: 10px;
@@ -166,12 +166,14 @@
   <div class="container">
     <div class="upper">
       <h2>Search According To Date</h2>
-      <div class="input-group">
-        <input type="date" id="searchDate" placeholder="Date" />
-        <button type="button" class="btn btn-primary" id="searchDateButton">
-          <i class="fa fa-fw fa-search"></i>
-        </button>
-      </div>
+      <!-- <div class="input-group"> -->
+        <form action="/graph" method="POST">
+          <input type="date" id="searchDate" placeholder="Date" />
+          <button type="submit" class="btn btn-primary" id="searchDateButton">
+            <i class="fa fa-fw fa-search"></i>
+          </button>
+        </form>
+      <!-- </div> -->
     </div>
     <div class="row">
       <% users.forEach(function(mac) { %>
@@ -200,7 +202,7 @@
             datasets: [{
               label: macId,
               data: yValues,
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              backgroundColor: 'rgb(30, 30, 132)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1
             }]
