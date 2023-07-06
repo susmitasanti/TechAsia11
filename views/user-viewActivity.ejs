@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <style>
+    /* @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); */
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+    body {
+      background-color: rgb(214, 225, 234);
+    }
+
+    .navbar {
+      width: 100%;
+      background-color: #22196b;
+      overflow: auto;
+    }
+
+    /* Navbar links */
+    .navbar a {
+      float: left;
+      text-align: center;
+      padding: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 23px;
+    }
+
+    .navbar img {
+      margin-top: 8px;
+      margin-left: 12px;
+      float: left;
+      height: 50px;
+    }
+
+
+    .dropdown2 {
+      float: right;
+      margin-right: 30px;
+    }
+
+
+    .dropdown2 .dropbtn2 {
+      font-size: 23px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 20px;
+      background-color: inherit;
+      font-family: inherit;
+    }
+
+
+    /* Add a red background color to navbar links on hover */
+    .navbar a:hover,
+    .navbar p:hover,
+    .dropdown2:hover .dropbtn2 {
+      background-color: red;
+    }
+
+    /* Dropdown content (hidden by default) */
+
+    .dropdown-content2 {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+
+    .dropdown-content2 a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      font-size: larger;
+    }
+
+    /* Add a grey background color to dropdown links on hover */
+
+    .dropdown-content2 a:hover {
+      background-color: #ddd;
+    }
+
+    /* Show the dropdown menu on hover */
+
+    .dropdown2:hover .dropdown-content2 {
+
+      display: block;
+    } 
+
+    .upper {
+      background-color: rgb(232, 238, 240);
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+      position: relative;
+      margin-top: 12px;
+      overflow: auto;
+      min-height: 120px;
+      max-height: 120px;
+      padding: 10px;
+    }
+
+    .upper h2 {
+      text-align: center;
+      color: black;
+      margin-top: 3px;
+      font-size: 28px;
+    }
+
+    .lower {
+      background-color: rgb(232, 238, 240);
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+      position: relative;
+      overflow: auto;
+      margin-top: 20px;
+      height: auto;
+      padding: 10px;
+    }
+
+    /* .input-group{
+  height: 40px;
+  margin-top: 12px;
+}
+
+#search , #button{
+  padding: 8px;
+  font-size: 12px;
+} */
+    #registration {
+      font-family: Montserrat bold;
+      border-collapse: collapse;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    #registration td,
+    #registration th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      overflow: hidden;
+    }
+
+    #registration tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #registration tr:hover {
+      background-color: #ddd;
+    }
+
+    #registration th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #233789;
+      color: white;
+    }
+
+    #delete {
+      color: red;
+      cursor: pointer;
+    }
+
+    .input-group,
+    #search1 {
+      padding: 10px;
+      /* border: 2px solid rgb(225, 71, 71); */
+      margin-top: 4px;
+      margin-left: 470px;
+      font-size: 15px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+
+    #button {
+      padding: 8px;
+      border: 2px solid #22196b;
+      margin-top: 5px;
+      font-size: 17px;
+      background-color: #22196b;
+      color: white;
+      cursor: pointer;
+    }
+
+    #search1 {
+      border: 1.5px solid #22196b;
+    }
+
+    #graph,
+    #activity {
+      border: 2px solid #22196b;
+      background-color: #22196b;
+      color: white;
+      cursor: pointer;
+    }
+
+    #logout {
+      font-size: 17px;
+      background-color: #22196b;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="navbar">
+    <img src="techAsia-LOGO_horizontal1028.png" alt="">
+    &nbsp; &nbsp;
+    <a href="http://localhost:3000/user-profile"><i class="fa fa-fw fa-user"></i>Profile</a>
+    &nbsp; &nbsp;
+    <a href="http://localhost:3000/dashboard"><i class="fa fa-fw fa-calculator"></i>Activity</a>
+    &nbsp; &nbsp;
+    <a href="http://localhost:3000/mydevices"><i class="fa fa-fw fa-calculator"></i>My Devices</a>
+    &nbsp; &nbsp;
+    <a href="http://localhost:3000/graph"><i class="fa fa-fw fa-pie-chart"></i>Graphs</a>
+
+    <form id="Profile" action="/logout" method="GET" enctype="text/plain">
+      <button>Logout</button>
+    </form>
+  </div>
+  <div class="container">
+    <div class="upper" align="center">
+      <h2>Search By Date</h2>
+        <input type="date" id="searchDate" placeholder="Date" />
+        <button type="search" id="button" onclick="myFunction1()">Search</button>
+        <i class="fa fa-fw fa-search"></i>
+        </button>
+    </div>
+    <div class="lower">
+      <table class="table" id="registration">
+        <thead>
+          <tr>
+            <th>Sr No.</th>
+            <th>Count</th>
+            <th>Session Duration</th>
+            <th>MAC ID</th>
+            <th>Time</th>
+            <th>Date(YYYY-MM-DD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(function(user, index) { %>
+            <tr>
+              <td>
+                <%= index + 1 %>
+              </td>
+              <td>
+                <%= user.count %>
+              </td>
+              <td>
+                <%= user.session_time %>
+              </td>
+              <td>
+                <%= user.mac_id %>
+              </td>
+              <td>
+                <%= user.time %>
+              </td>
+              <!-- <td>
+                <%= user.date.toISOString().split('T')[0] %>
+              </td> -->
+              <td>
+                <%= new Date(user.date.getTime() + (24 * 60 * 60 * 1000)).toISOString().split('T')[0] %>
+              </td>              
+            </tr>
+            <% }); %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("Profile").addEventListener("click", async function (event) {
+
+      fetch(`http://localhost:3000/logout`, {
+        method: "POST", // Replace with the appropriate HTTP method
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          // // Handle the API response data
+          // console.log("Hulloo")
+          console.log("Tata");
+        })
+        .catch(error => {
+          // // Handle any errors that occurred during the API request
+          console.log("Bubyee Error")
+
+          console.error(error);
+        });
+    });
+
+    function myFunction1() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchDate");
+      filter = input.value.toUpperCase();
+      console.log(filter)
+      table = document.getElementById("registration");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    };
+  </script>
+
+</body>
+
+</html>
