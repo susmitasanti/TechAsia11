@@ -248,8 +248,8 @@
                     <input type="text" placeholder="Name" id="name" />
                     <input type="email" placeholder="Email" id="email" />
                     <input type="number" placeholder="Phone Number" id="phone">
-                    <input type="text" placeholder="Password" id="newPassword" />
-                    <input type="text" placeholder="Repeat Password" id="repeatPassword">
+                    <input type="password" placeholder="Password" id="newPassword" />
+                    <input type="password" placeholder="Repeat Password" id="repeatPassword">
                     <!-- <i class="fa-solid fa-eye" id="eye"></i> -->
                     <button id="update">
                         Update
@@ -287,36 +287,48 @@
             const repeatPassword = document.getElementById("repeatPassword").value;
             console.log(phone1.length)
 
-            if (phone1.length !== 10 && phone1.length!==0) {
+            if (phone1.length !== 10 && phone1.length !== 0) {
                 event.preventDefault(); // Prevent form submission
                 alert("Phone number should be 10 digits.");
             }
-            else if (phone1.length == 10 || phone1.length == 0)
-            {
-                fetch(`http://localhost:3000/user-changeDetails?name=${name1}&email=${email1}&phone=${phone1}&newPassword=${newPassword}&repeatPassword=${repeatPassword}`, {
-                    method: "POST", // Replace with the appropriate HTTP method
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Handle the API response data
-                        console.log("Hulloo")
-                        console.log(data);
+            else if (phone1.length == 10 || phone1.length == 0) {
+                if (newPassword == repeatPassword) {
+                    fetch(`http://localhost:3000/user-changeDetails?name=${name1}&email=${email1}&phone=${phone1}&newPassword=${newPassword}&repeatPassword=${repeatPassword}`, {
+                        method: "POST", // Replace with the appropriate HTTP method
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
                     })
-                    .catch(error => {
-                        // Handle any errors that occurred during the API request
-                        console.log("Bubyee")
+                        .then(response => response.json())
+                        .then(data => {
+                            // Handle the API response data
+                            console.log("Hulloo")
+                            console.log(data);
+                        })
+                        .catch(error => {
+                            // Handle any errors that occurred during the API request
+                            console.log("Bubyee")
 
-                        console.error(error);
-                    });
+                            console.error(error);
+                        });
+                }
+                else{
+                    let conf = confirm("Please recheck password");
+                }
             }
 
         });
 
+        const passwordInput = document.querySelector("#password")
+        const eye = document.querySelector("#eye")
+        eye.addEventListener("click", function () {
+            this.classList.toggle("fa-eye-slash")
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+            passwordInput.setAttribute("type", type)
+        });
 
-        
+
+
     </script>
 </body>
 
