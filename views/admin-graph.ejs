@@ -151,6 +151,7 @@
     .row {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
 
     }
 
@@ -208,7 +209,7 @@
       padding: 7.8px;
       /* border: 2px solid rgb(225, 71, 71); */
       margin-top: 4px;
-      margin-left: 520px;
+      /* margin-left: 520px; */
       align-items: center;
       font-size: 15px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -228,9 +229,9 @@
 <body>
   <div class="navbar">
     <img src="techAsia-LOGO_horizontal1028.png" alt="">
-    <a href="http://localhost:3000/admin-dashboard"><i class="fa fa-fw fa-search"></i>Users Data</a>
-    <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i>Activity</a>
-    <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i>Add User</a>
+    <a href="http://localhost:3000/admin-dashboard"><i class="fa fa-fw fa-search"></i> Users Data</a>
+    <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a>
+    <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a>
     <div class="dropdown2">
       <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
         <i class="fa fa-caret-down"></i>
@@ -246,16 +247,18 @@
     </div>
   </div>
   <div class="container">
-    <div class="upper">
+    <div class="upper" align="center">
       <h2>Search According To Date</h2>
-      <div class="input-group">
+      <!-- <div class="input-group"> -->
+      <form action="/admin-viewGraph" method="POST">
         <input type="date" id="searchDate" placeholder="Date" />
-        <button type="button" class="btn btn-primary" id="searchDateButton">
+        <button type="submit" class="btn btn-primary" id="searchDateButton">
           <i class="fa fa-fw fa-search"></i>
         </button>
-      </div>
+      </form>
+      <!-- </div> -->
     </div>
-    <div class="row">
+    <div class="row" align="center">
       <% users.forEach(function(mac) { %>
         <div class="lower">
           <canvas id="<%= mac.mac_id %>-chart" style="width: 50%; height: 50%;"
@@ -283,6 +286,8 @@
               backgroundColor: 'rgb(30, 30, 132)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1
+            }, {
+              label: '<%-date%>'
             }]
           },
           options: {
@@ -330,4 +335,5 @@
 
   </script>
 </body>
+
 </html>

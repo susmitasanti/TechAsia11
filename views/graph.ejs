@@ -155,13 +155,14 @@
     <img src="techAsia-LOGO_horizontal1028.png" alt="">
     <a href="http://localhost:3000/user-profile"><i class="fa fa-fw fa-user"></i>Profile</a>
     <a href="http://localhost:3000/dashboard"><i class="fa fa-fw fa-calculator"></i>Activity</a>
-    <a href=""><i class="fa fa-fw fa-pie-chart"></i>Graphs</a>
+    <a href="http://localhost:3000/mydevices"><i class="fa fa-fw fa-calculator"></i>My Devices</a>
+    <a href="http://localhost:3000/graph"><i class="fa fa-fw fa-pie-chart"></i>Graphs</a>
 
 
     <!-- <a href="#" target="blank" id="Profile" action="/logout" method="GET" enctype="text/plain"><i class="fa fa-fw fa-user"></i> Profile</a> -->
     <form id="Profile" action="/logout" method="GET" enctype="text/plain">
       <button>Logout</button>
-    </form>
+  </form>
   </div>
   <div class="container">
     <div class="upper">
@@ -205,6 +206,8 @@
               backgroundColor: 'rgb(30, 30, 132)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1
+            },{
+              label:'<%-date%>'
             }]
           },
           options: {
@@ -250,6 +253,27 @@
       const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
       passwordInput.setAttribute("type", type)
     });
+
+    document.getElementById("Profile").addEventListener("click", async function (event) {
+fetch(`http://localhost:3000/logout`, {
+      method: "POST", // Replace with the appropriate HTTP method
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        // // Handle the API response data
+        // console.log("Hulloo")
+        console.log("Tata");
+      })
+      .catch(error => {
+        // // Handle any errors that occurred during the API request
+        console.log("Bubyee Error")
+
+        console.error(error);
+      });
+  })
 
   </script>
 </body>

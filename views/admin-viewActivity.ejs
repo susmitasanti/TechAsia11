@@ -218,40 +218,44 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <img src="techAsia-LOGO_horizontal1028.png" alt="">
-        <a href="http://localhost:3000/admin-dashboard"><i class="fa fa-fw fa-search"></i> Users Data</a>
-        <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a>
-        <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a>
-        <div class="dropdown2">
-          <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content2">
-            <a href="http://localhost:3000/admin-profile">Admin Profile</a>
-            <a href="#">
-              <form id="Profile" action="/logout" method="GET" enctype="text/plain">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="logout">Logout</button>
-              </form>
-            </a>
-          </div>
-        </div>
+  <div class="navbar">
+    <img src="techAsia-LOGO_horizontal1028.png" alt="">
+    <a><i class="fa fa-fw fa-search"></i> Users Data</a>
+    <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a>
+    <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a>
+    <div class="dropdown2">
+      <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content2">
+        <a href="http://localhost:3000/admin-profile">Admin Profile</a>
+        <a href="#">
+          <form id="Profile" action="/logout" method="GET" enctype="text/plain">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="logout">Logout</button>
+          </form>
+        </a>
       </div>
+    </div>
+  </div>
   <div class="container">
     <div class="lower">
       <table class="table" id="registration">
         <thead>
           <tr>
+            <th>Sr No.</th>
             <th>Count</th>
             <th>Session Duration</th>
             <th>MAC ID</th>
             <th>Time</th>
-            <th>Date</th>
+            <th>Date(YYYY-MM-DD)</th>
           </tr>
         </thead>
         <tbody>
-          <% users.forEach(function(user) { %>
+          <% users.forEach(function(user, index) { %>
             <tr>
+              <td>
+                <%= index + 1 %>
+                </td>
               <td>
                 <%= user.count %>
               </td>
@@ -265,7 +269,7 @@
                 <%= user.time %>
               </td>
               <td>
-                <%= user.date %>
+                <%= new Date(user.date.getTime() + (24 * 60 * 60 * 1000)).toISOString().split('T')[0] %>
               </td>
             </tr>
             <% }); %>

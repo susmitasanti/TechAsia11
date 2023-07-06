@@ -218,23 +218,23 @@
 <body>
     <div class="navbar">
         <img src="techAsia-LOGO_horizontal1028.png" alt="">
-        <a href="http://localhost:3000/admin-dashboard"><i class="fa fa-fw fa-search"></i>Users Data</a>
-        <a href=""><i class="fa fa-fw fa-calculator"></i>Activity</a>
-        <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i>Add User</a>
+        <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-search"></i> Users Data</a>
+        <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a>
+        <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a>
         <div class="dropdown2">
-            <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content2">
-                <a href="http://localhost:3000/admin-profile">Admin Profile</a>
-                <a href="#">
-                    <form id="Profile" action="/logout" method="GET" enctype="text/plain">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="logout">Logout</button>
-                    </form>
-                </a>
-            </div>
+          <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content2">
+            <a href="http://localhost:3000/admin-profile">Admin Profile</a>
+            <a href="#">
+              <form id="Profile" action="/logout" method="GET" enctype="text/plain">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="logout">Logout</button>
+              </form>
+            </a>
+          </div>
         </div>
-    </div>
+      </div>
     <div class="container">
         <div class="upper">
             <h2>Search According To Name</h2>
@@ -278,7 +278,7 @@
                                 <%= user.time %>
                             </td>
                             <td>
-                                <%= user.date %>
+                                <%= String(user.date).slice(0, 15) %>
                             </td>
                         </tr>
                         <% }); %>

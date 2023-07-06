@@ -12,7 +12,7 @@
 
     <style>
         body {
-            background-image: url(technology-background_23-2148458951.avif);
+            background-image: url(technology-background_23-2148458951.png);
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -223,11 +223,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="http://localhost:3000/dashboard"><i
                                 class="fa fa-fw fa-calculator"></i>Activity</a>
+                                &nbsp &nbsp &nbsp ;
+                                <li class="nav-item">
+                                    <a class="nav-link" href="http://localhost:3000/mydevices"><i
+                                            class="fa fa-fw fa-calculator"></i>My Devices</a>
                     </li>
                     &nbsp &nbsp &nbsp ;
                     <li class="nav-item">
                         <a class="nav-link" href="http://localhost:3000/graph"><i
                                 class="fa fa-fw fa-pie-chart"></i>Graph</a>
+                    </li>
+
+                    /li>
+                    &nbsp &nbsp &nbsp ;
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/user-changeDetails"><i
+                                class="fa fa-fw fa-pie-chart"></i>Change</a>
                     </li>
                 </ul>
             </div>
@@ -308,6 +319,27 @@
         function sendMail() {
             window.location = "mailto:info@techasiamechatronics@gmail.com";
         }
+        document.getElementById("Profile").addEventListener("click", async function (event) {
+
+fetch(`http://localhost:3000/logout`, {
+  method: "POST", // Replace with the appropriate HTTP method
+  headers: {
+    "Content-Type": "application/json",
+  },
+})
+  .then(response => response.json())
+  .then(data => {
+    // // Handle the API response data
+    // console.log("Hulloo")
+    console.log("Tata");
+  })
+  .catch(error => {
+    // // Handle any errors that occurred during the API request
+    console.log("Bubyee Error")
+
+    console.error(error);
+  });
+})
     </script>
 </body>
 

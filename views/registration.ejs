@@ -179,10 +179,10 @@
 		<div class="form-container sign-up-container">
 			<form action="/" method="GET" enctype="text/plain">
 				<h1>Sign-up</h1>
-				<input type="text" placeholder="Name" id="name" />
-				<input type="email" placeholder="Email" id="email" />
-				<input type="number" placeholder="Phone Number" id="phone">
-				<input type="password" placeholder="Password" id="password" />
+				<input type="text" placeholder="Name" id="name" required />
+				<input type="email" placeholder="Email" id="email" required />
+				<input type="number" placeholder="Phone Number" id="phone" required>
+				<input type="password" placeholder="Password" id="password" required/>
 				<i class="fa-solid fa-eye" id="eye"></i>
 				<button id="register">Sign Up</button>
 				<span>
@@ -210,21 +210,28 @@
 		const phone1 = document.getElementById("phone").value;
 		const password1 = document.getElementById("password").value;
 
-		fetch(`http://localhost:3000/register?name=${name1}&email=${email1}&phone=${phone1}&password=${password1}`, {
-			method: "POST", // Replace with the appropriate HTTP method
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-			.then(response => response.json())
-			.then(data => {
-				// Handle the API response data
-				console.log(data);
+		if (phone1.length !== 10) {
+			event.preventDefault(); // Prevent form submission
+			alert("Phone number should be 10 digits.");
+		}
+		else if (phone1.length == 10) {
+
+			fetch(`http://localhost:3000/register?name=${name1}&email=${email1}&phone=${phone1}&password=${password1}`, {
+				method: "POST", // Replace with the appropriate HTTP method
+				headers: {
+					"Content-Type": "application/json",
+				},
 			})
-			.catch(error => {
-				// Handle any errors that occurred during the API request
-				console.error(error);
-			});
+				.then(response => response.json())
+				.then(data => {
+					// Handle the API response data
+					console.log(data);
+				})
+				.catch(error => {
+					// Handle any errors that occurred during the API request
+					console.error(error);
+				});
+		}
 	});
 	const passwordInput = document.querySelector("#password")
 	const eye = document.querySelector("#eye")
