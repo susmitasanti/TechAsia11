@@ -3,11 +3,9 @@
 
 <head>
 
-	<title>Reset-Password Form</title>
+	<title>Registration Form</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-	<!-- <link rel="stylesheet" href="sign_in.css"> -->
 	<style>
-		/*@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
@@ -17,7 +15,7 @@
 
 		body {
 			font-family: 'Inter', sans-serif;
-			background-image: url(technology-background_23-2148458951.png);
+			background-image: url(technology-background_23-2148458951.avif);
 			background-repeat: no-repeat;
 			background-size: cover;
 			display: flex;
@@ -25,18 +23,7 @@
 			align-items: center;
 			flex-direction: column;
 			height: 100vh;
-			margin: -20px 0 50px;
 		}
-
-		h1 {
-			margin-top: 12px;
-			font-weight: bold;
-		}
-
-		h2 {
-			text-align: center;
-		}
-
 		p {
 			font-size: 14px;
 			font-weight: 100;
@@ -59,7 +46,7 @@
 			color: #FFFFFF;
 			font-size: 12px;
 			font-weight: bold;
-			padding: 12px 45px;
+			padding: 12px 24px;
 			letter-spacing: 1px;
 			text-transform: uppercase;
 			margin-top: 15px;
@@ -84,12 +71,12 @@
 			text-align: center;
 		}
 
-		input {
+		input ,#password{
 			background-color: #eee;
 			border: none;
 			padding: 12px 15px;
 			margin: 8px 0;
-			width: 100%;
+			width: 120%;
 		}
 
 		.container {
@@ -106,35 +93,32 @@
 
 		.form-container {
 			position: absolute;
-			top: 0;
 			height: 100%;
-			margin-left: 3.5px;
+			display: flex; 
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			width: 50%; 
 		}
+
 
 		.overlay-container {
 			position: absolute;
-			top: 0;
 			left: 50%;
 			width: 50%;
 			height: 100%;
 			overflow: hidden;
-			transition: transform 0.6s ease-in-out;
-			z-index: 100;
 		}
 
 		.overlay {
 			background: linear-gradient(to right, rgb(30, 30, 132), #2b1653);
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: 0 0;
 			color: #FFFFFF;
-			position: relative;
+			position: absolute;
 			left: -100%;
 			height: 100%;
 			width: 200%;
-			transform: translateX(0);
-			transition: transform 0.6s ease-in-out;
 		}
+
 
 		.overlay-panel {
 			position: absolute;
@@ -144,11 +128,8 @@
 			flex-direction: column;
 			padding: 0 40px;
 			text-align: center;
-			top: 0;
 			height: 100%;
 			width: 50%;
-			transform: translateX(0);
-			transition: transform 0.6s ease-in-out;
 		}
 
 		.overlay-right {
@@ -156,25 +137,32 @@
 			transform: translateX(0);
 		}
 
-		.reset-password-container {
-			width: 280px;
+		#eye{
 			position: relative;
-
+			left: 50%;
+			bottom:7.5%;
+			cursor: pointer;
+			color: rgb(135, 151, 185);
 		}
 	</style>
 </head>
 
-
 <body>
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
-			<form action="/" method="GET" enctype="text/plain">
-				<h1>Sign-up</h1>
-				<input type="password" placeholder="New-Password" id="password" />
-				<input type="password" placeholder="Confirm-Password" id="password" />
-				<button id="reset">Set New Password</button>
+			<form action="/admin-registration" method="GET" enctype="text/plain">
+				<h1>New Admin</h1>
+				<input type="text" placeholder="Name" id="name" />
+				<input type="email" placeholder="Email" id="email" />
+				<input type="number" placeholder="Phone Number" id="phone">
+                <input type="text" placeholder="Username" id="username">
+				<input type="password" placeholder="Password" id="password"/>
+				<i class="fa-solid fa-eye" id="eye"></i>
+				<button id="register">Sign Up</button>
+				
 			</form>
 		</div>
+
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-right">
@@ -186,27 +174,40 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		document.getElementById("register").addEventListener("click", function (event) {
-			const password1 = document.getElementById("password").value;
+</body>
+<script>
+	document.getElementById("register").addEventListener("click", function (event) {
+		const name1 = document.getElementById("name").value;
+		const email1 = document.getElementById("email").value;
+		const phone1 = document.getElementById("phone").value;
+		const username1 = document.getElementById("username").value;
+		const password1 = document.getElementById("password").value;
 
-			fetch(`http://localhost:3000/register?password=${password1}`, {
-				method: "POST", // Replace with the appropriate HTTP method
-				headers: {
-					"Content-Type": "application/json",
-				},
+		fetch(`http://localhost:3000/admin-registration?name=${name1}&email=${email1}&phone=${phone1}&username=${username1}&password=${password1}`, {
+			method: "POST", // Replace with the appropriate HTTP method
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then(response => response.json())
+			.then(data => {
+				// Handle the API response data
+				console.log(data);
 			})
-				.then(response => response.json())
-				.then(data => {
-					// Handle the API response data
-					console.log(data);
-				})
-				.catch(error => {
-					// Handle any errors that occurred during the API request
-					console.error(error);
-				});
-		});
-	</script>
+			.catch(error => {
+				// Handle any errors that occurred during the API request
+				console.error(error);
+			});
+	});
+	const passwordInput = document.querySelector("#password")
+	const eye = document.querySelector("#eye")
+	eye.addEventListener("click", function () {
+		this.classList.toggle("fa-eye-slash")
+		const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+		passwordInput.setAttribute("type", type)
+	});
+
+</script>
 </body>
 
 </html>

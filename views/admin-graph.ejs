@@ -8,58 +8,89 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
-    /* @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); */
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
     body {
       background-color: rgb(214, 225, 234);
+      font-family: 'Inter', sans-serif;
     }
 
     .navbar {
       width: 100%;
       background-color: #22196b;
-      /* height: 80px; */
-      overflow: auto;
+      overflow: hidden;
     }
 
-    /* Navbar links */
     .navbar a {
       float: left;
       text-align: center;
       padding: 20px;
       color: white;
       text-decoration: none;
-      font-size: 23px;
-      /* margin-top: 7px;
-      margin-left: 12px; */
+      font-size: 20px;
+      margin-left: 0 px 12px;
     }
 
     .navbar img {
-      margin-top: 10px;
+      margin-top: 2px;
       margin-left: 12px;
       float: left;
-      height: 50px;
-      /* width: 140px; */
+      height: 60px;
+      width: 140px;
     }
 
-    .navbar a:hover {
+
+    .dropdown2 {
+      float: right;
+      margin-right: 30px;
+      font-size: 20px;
+    }
+
+
+    .dropdown2 .dropbtn2 {
+      font-size: 20px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 20px;
+      background-color: inherit;
+			font-family: 'Inter', sans-serif;
+    }
+
+
+    .navbar a:hover,
+    .navbar p:hover,
+    .dropdown2:hover .dropbtn2 {
       background-color: red;
     }
 
-    /* #Profile {
-      float: right;
-      margin-right: 23px;
+    .dropdown-content2 {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      min-width: 146px;
+      border: solid 1px;
     }
 
-    #Profile button {
-      background-color: rgb(30, 30, 132);
-      color: white;
-      font-size: 18px;
-      padding: 6px;
-      margin-top: 21px;
-      border: 2px solid #e0e0e0;
-    } */
+    .dropdown-content2 a {
+      float: none;
+      color: black;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      font-size: 20px;
+      padding: 12px 16px;
+    }
 
+
+    .dropdown-content2 a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown2:hover .dropdown-content2 {
+      display: block;
+    }
     .upper {
       background-color: rgb(232, 238, 240);
       border-radius: 10px;
@@ -80,124 +111,29 @@
         0 10px 10px rgba(0, 0, 0, 0.22);
       position: relative;
       overflow: auto;
-      margin-top: 20px;
+      margin: 20px;
       min-height: 310px;
       padding: 10px;
       width: 500px;
-      /* margin-right: 30px;  */
-      margin-left: 65px;
     }
-
-    .dropdown2 {
-      float: right;
-      margin-right: 30px;
-    }
-
-
-    .dropdown2 .dropbtn2 {
-      font-size: 23px;
-      border: none;
-      outline: none;
-      color: white;
-      padding: 20px;
-      background-color: inherit;
-      font-family: inherit;
-    }
-
-
-    /* Add a red background color to navbar links on hover */
-
-    .dropdown2:hover .dropbtn2 {
-      background-color: red;
-    }
-
-    /* Dropdown content (hidden by default) */
-
-    .dropdown-content2 {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-
-    /* Links inside the dropdown */
-
-    .dropdown-content2 a {
-      float: none;
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      text-align: left;
-      font-size: larger;
-    }
-
-    /* Add a grey background color to dropdown links on hover */
-
-    .dropdown-content2 a:hover {
-      background-color: #ddd;
-    }
-
-    /* Show the dropdown menu on hover */
-
-    .dropdown2:hover .dropdown-content2 {
-
-      display: block;
-    }
-
-
     .row {
       display: flex;
       flex-wrap: wrap;
 
     }
 
-    #registration {
-      font-family: Montserrat bold;
-      border-collapse: collapse;
-      overflow: hidden;
-      width: 100%;
-    }
-
-    #registration td,
-    #registration th {
-      border: 2px solid #ddd;
-      padding: 8px;
-      overflow: auto;
-    }
-
-    #registration tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    #registration tr:hover {
-      background-color: #ddd;
-    }
-
-    #registration th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #233789;
-      color: white;
-      font-size: 17px;
-    }
-
     .upper h2 {
       text-align: center;
       color: black;
-      margin-top: 3px;
-      font-size: 30px;
+      margin-top: 10px;
+      font-size: 20px;
     }
 
     #searchDateButton {
-      padding: 8px;
+      padding: 7px;
       border: 2px solid #22196b;
-      margin-top: 5px;
-      /* margin-left: 577px; */
-      font-size: 17px;
+      margin-top: 3px;
+      font-size: 15px;
       background-color: #22196b;
       color: white;
       cursor: pointer;
@@ -206,19 +142,18 @@
     #searchDate {
       border: 1.5px solid #22196b;
       padding: 7.8px;
-      /* border: 2px solid rgb(225, 71, 71); */
       margin-top: 4px;
-      margin-left: 520px;
       align-items: center;
-      font-size: 15px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 13px;
+			font-family: 'Inter', sans-serif;
     }
 
     #logout {
-      font-size: 17px;
+       font-size: 15px;
       background-color: #22196b;
       color: white;
       cursor: pointer;
+      margin-left: -30px;
     }
   </style>
 
@@ -236,7 +171,8 @@
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content2">
-        <a href="http://localhost:3000/admin-profile">Admin Profile</a>
+        <a href="http://localhost:3000/admin-profile"> Profile</a>
+        <a href="http://localhost:3000/admin-registration">New Admin</a>
         <a href="#">
           <form id="Profile" action="/logout" method="GET" enctype="text/plain">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="logout">Logout</button>
@@ -246,18 +182,20 @@
     </div>
   </div>
   <div class="container">
-    <div class="upper">
+    <div class="upper" align="center">
       <h2>Search According To Date</h2>
-      <div class="input-group">
-        <input type="date" id="searchDate" placeholder="Date" />
-        <button type="button" class="btn btn-primary" id="searchDateButton">
-          <i class="fa fa-fw fa-search"></i>
-        </button>
-      </div>
+      <!-- <div class="input-group"> -->
+        <form action="/admin-graph" method="POST">
+          <input type="date" id="searchDate" placeholder="Date" />
+          <button type="submit" class="btn btn-primary" id="searchDateButton">
+            <i class="fa fa-fw fa-search"></i>
+          </button>
+        </form>
+      <!-- </div> -->
     </div>
-    <div class="row">
+    <div class="row" align="center">
       <% users.forEach(function(mac) { %>
-        <div class="lower">
+        <div class="lower" >
           <canvas id="<%= mac.mac_id %>-chart" style="width: 50%; height: 50%;"
             data-chart-data='<%- JSON.stringify(data[users.indexOf(mac)]) %>'></canvas>
         </div>

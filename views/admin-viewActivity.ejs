@@ -7,116 +7,91 @@
 
 
   <style>
-    /* @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); */
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
     body {
       background-color: rgb(214, 225, 234);
+      font-family: 'Inter', sans-serif;
     }
 
     .navbar {
       width: 100%;
       background-color: #22196b;
-      overflow: auto;
+      overflow: hidden;
     }
 
-    /* Navbar links */
     .navbar a {
       float: left;
       text-align: center;
       padding: 20px;
       color: white;
       text-decoration: none;
-      font-size: 23px;
+      font-size: 20px;
+      margin-left: 0 px 12px;
     }
 
     .navbar img {
-      margin-top: 8px;
+      margin-top: 2px;
       margin-left: 12px;
       float: left;
-      height: 50px;
+      height: 60px;
+      width: 140px;
     }
 
 
     .dropdown2 {
       float: right;
       margin-right: 30px;
+      font-size: 20px;
     }
 
 
     .dropdown2 .dropbtn2 {
-      font-size: 23px;
+      font-size: 20px;
       border: none;
       outline: none;
       color: white;
       padding: 20px;
       background-color: inherit;
-      font-family: inherit;
+      font-family: 'Inter', sans-serif;
     }
 
 
-    /* Add a red background color to navbar links on hover */
     .navbar a:hover,
     .navbar p:hover,
     .dropdown2:hover .dropbtn2 {
       background-color: red;
     }
 
-    /* Dropdown content (hidden by default) */
-
     .dropdown-content2 {
       display: none;
       position: absolute;
       background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.2);
       z-index: 1;
+      min-width: 146px;
+      border: solid 1px;
     }
-
-    /* Links inside the dropdown */
 
     .dropdown-content2 a {
       float: none;
       color: black;
-      padding: 12px 16px;
       text-decoration: none;
       display: block;
-      text-align: left;
-      font-size: larger;
+      text-align: center;
+      font-size: 20px;
+      padding: 12px 12px;
     }
 
-    /* Add a grey background color to dropdown links on hover */
 
     .dropdown-content2 a:hover {
       background-color: #ddd;
+      padding: 12px 12px;
     }
-
-    /* Show the dropdown menu on hover */
 
     .dropdown2:hover .dropdown-content2 {
-
       display: block;
     }
-
-    /* .upper {
-      background-color: rgb(232, 238, 240);
-      border-radius: 10px;
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-        0 10px 10px rgba(0, 0, 0, 0.22);
-      position: relative;
-      margin-top: 12px;
-      overflow: auto;
-      min-height: 120px;
-      max-height: 120px;
-      padding: 10px;
-    }
-
-    .upper h2 {
-      text-align: center;
-      color: black;
-      margin-top: 3px;
-      font-size: 28px;
-    } */
 
     .lower {
       background-color: rgb(232, 238, 240);
@@ -130,20 +105,12 @@
       padding: 10px;
     }
 
-    /* .input-group{
-  height: 40px;
-  margin-top: 12px;
-}
-
-#search , #button{
-  padding: 8px;
-  font-size: 12px;
-} */
     #registration {
-      font-family: Montserrat bold;
+      font-family: 'Inter', sans-serif;
       border-collapse: collapse;
       overflow: hidden;
       width: 100%;
+      font-size: 13px;
     }
 
     #registration td,
@@ -177,19 +144,19 @@
     .input-group,
     #search1 {
       padding: 10px;
-      /* border: 2px solid rgb(225, 71, 71); */
       margin-top: 4px;
-      margin-left: 470px;
+      margin-left: 230px;
       font-size: 15px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', sans-serif;
+      position: relative;
 
     }
 
     #button {
-      padding: 8px;
+      padding: 9.5px;
       border: 2px solid #22196b;
-      margin-top: 5px;
-      font-size: 17px;
+      margin-top: 3.5px;
+      font-size: 15px;
       background-color: #22196b;
       color: white;
       cursor: pointer;
@@ -199,18 +166,22 @@
       border: 1.5px solid #22196b;
     }
 
-    #graph,#activity {
+    #graph,
+    #activity {
       border: 2px solid #22196b;
       background-color: #22196b;
       color: white;
       cursor: pointer;
+      font-size: 13px;
+
     }
 
     #logout {
-      font-size: 17px;
+      font-size: 15px;
       background-color: #22196b;
       color: white;
       cursor: pointer;
+      margin-left: -30px;
     }
   </style>
 
@@ -218,25 +189,26 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <img src="techAsia-LOGO_horizontal1028.png" alt="">
-        <a href="http://localhost:3000/admin-dashboard"><i class="fa fa-fw fa-search"></i> Users Data</a>
-        <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a>
-        <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a>
-        <div class="dropdown2">
-          <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content2">
-            <a href="http://localhost:3000/admin-profile">Admin Profile</a>
-            <a href="#">
-              <form id="Profile" action="/logout" method="GET" enctype="text/plain">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="logout">Logout</button>
-              </form>
-            </a>
-          </div>
-        </div>
+  <div class="navbar">
+    <img src="techAsia-LOGO_horizontal1028.png" alt="">
+    <a href="http://localhost:3000/admin-dashboard"><i class="fa fa-fw fa-search"></i> Users Data</a>
+    <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a>
+    <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a>
+    <div class="dropdown2">
+      <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content2">
+        <a href="http://localhost:3000/admin-profile">Profile</a>
+        <a href="http://localhost:3000/admin-registration">New Admin</a>
+        <a href="#">
+          <form id="Profile" action="/logout" method="GET" enctype="text/plain">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="logout">Logout</button>
+          </form>
+        </a>
       </div>
+    </div>
+  </div>
   <div class="container">
     <div class="lower">
       <table class="table" id="registration">
@@ -265,7 +237,7 @@
                 <%= user.time %>
               </td>
               <td>
-                <%= user.date %>
+                <%= String(user.date).slice(0, 16) %>
               </td>
             </tr>
             <% }); %>

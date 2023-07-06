@@ -5,7 +5,9 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
   <style>
+    /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap'); */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
     * {
@@ -131,7 +133,7 @@
       margin-top: 5px;
     }
 
-    .upper {
+    .lower {
       background-color: rgb(232, 238, 240);
       border-radius: 10px;
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
@@ -175,8 +177,20 @@
       background-color: #233789;
       color: white;
     }
-  </style>
 
+    #delete {
+      color: red;
+      cursor: pointer;
+    }
+
+    #activity {
+      border: 2px solid #22196b;
+      background-color: #22196b;
+      color: white;
+      cursor: pointer;
+      font-size: 13px;
+    }
+  </style>
 
 </head>
 
@@ -202,18 +216,21 @@
     </ul>
   </nav>
 
+
   <div class="container">
-    <div class="upper">
+
+    <div class="lower">
+      <!-- <h1>Admin Dashboard</h1> -->
+      <br>
       <table class="table" id="registration">
         <thead>
           <tr>
-            <th>MAC ID</th>
-            <th>Count</th>
-            <th>Session Duration</th>
-            <th>Date</th>
-
+            <th>Mac Id</th>
+            <th>View</th>
+            <th>Function</th>
           </tr>
         </thead>
+
         <tbody>
           <% users.forEach(function(user) { %>
             <tr>
@@ -221,28 +238,64 @@
                 <%= user.mac_id %>
               </td>
               <td>
-                <%= user.count %>
+                <div style="text-align:center;">
+                  <form action="/user-viewActivity?mac_id=<%= user.mac_id %>" method="POST">
+                    <button onclick="viewActivity(this)" mac_id="<%= user.mac_id %>" id="activity">Activity</button>
+                  </form>
+                </div>
               </td>
               <td>
-                <%= user.session_time %>
-              </td>
-
-              <td>
-                <%= String(user.date).slice(0, 16) %>
+                <!-- <a class='btn btn-primary btn-sm' href='update'>Update</a> -->
+                <a class='btn btn-danger btn-sm deleteButton' onclick="deleteUser(this)" email="<%= user.email %>"
+                  id="delete">Delete</a>
               </td>
             </tr>
             <% }); %>
         </tbody>
       </table>
     </div>
-    <!-- <div class="lower">
-     
-    </div> -->
   </div>
 
   <script>
-    document.getElementById("Profile").addEventListener("click", async function (event) {
+    function deleteUser(button) {
+      var deleteUser = button.getAttribute("email")
+      fetch(`http://localhost:3000/delete?email=${deleteUser}`, {
+        method: "POST", // Replace with the appropriate HTTP method
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          var rowToRemove = button.closest("tr");
+          rowToRemove.remove();
+          console.log(data);
+        })
+        .catch(error => {
+          // Handle any errors that occurred during the API request
+          console.error(error);
+        });
+    };
+    function viewActivity() {
+      var mac_id = button.getAttribute("mac_id")
+      fetch(`http://localhost:3000/user-viewActivity?mac_id=${mac_id}`, {
+        method: "GET", // Replace with the appropriate HTTP method
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          // Handle any errors that occurred during the API request
+          console.error(error);
+        });
+    }
 
+
+    document.getElementById("Profile").addEventListener("click", async function (event) {
       fetch(`http://localhost:3000/logout`, {
         method: "POST", // Replace with the appropriate HTTP method
         headers: {
@@ -262,8 +315,8 @@
           console.error(error);
         });
     })
-  </script>
 
+  </script>
 </body>
 
 </html>
