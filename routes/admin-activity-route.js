@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db');
-const { getSessionEmail } = require('./sessionHandler.js');
-const { requireLogin } = require('./middleware')
+const { admin_requireLogin } = require('./admin-middleware')
 
-router.get('/', requireLogin, async function (req, res, next) {
+router.get('/', admin_requireLogin, async function (req, res, next) {
   const result = await db.query(
     `SELECT registration.name, statistics.count, statistics.session_time, statistics.mac_id, statistics.time, statistics.date 
      FROM statistics 

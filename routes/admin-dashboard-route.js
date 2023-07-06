@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db');
-const { getSessionEmail } = require('./sessionHandler.js');
 const {admin_requireLogin} = require('./admin-middleware')
 
 

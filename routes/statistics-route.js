@@ -14,7 +14,7 @@ router.get('/', async function (req, res, next) {
   if (result.affectedRows) {
     message = 'Statistics added successfully';
     console.log({ message: message })
-    res.send("Wohooo")
+    res.send("Details sent successfully.")
 
 
   }

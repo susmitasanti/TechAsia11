@@ -2,11 +2,15 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db');
 const Chart = require('chart.js');
-const { getSessionEmail } = require('./sessionHandler.js');
+const {setSessionEmail, getSessionEmail} = require('./sessionHandler')
 const { setDate, getDate } = require("./current-dateHandler");
+const {admin_requireLogin} = require("./admin-middleware")
 
-router.get('/', async function (req, res, next) {
+router.get('/', admin_requireLogin, async function (req, res, next) {
   console.log(req.query.email)
+  setSessionEmail(req.query.email)
+  console.log(`setSessionEmail:${getSessionEmail()}`)
+
   const result = await db.query(
     `SELECT DISTINCT statistics.mac_id FROM registration INNER JOIN statistics ON registration.phone = statistics.phone1 WHERE registration.email='${req.query.email}';`
   )
@@ -26,11 +30,13 @@ router.get('/', async function (req, res, next) {
   }
 
   console.log(result)
+
   console.log(graphResults)
   res.render('D:/TechAsia11/views/admin-graph.ejs', { data: graphResults, date: getDate(), users: result });
 });
 
 router.post('/', async function (req, res, next) {
+  // console.log(`getSessionEmail:${getSessionEmail()}`)
   res.redirect(`/admin-graph?email=${req.query.email}`);
 });
 

@@ -3,7 +3,7 @@ const app = express();
 var router = express.Router();
 var db = require('../db');
 const bcrypt = require('bcryptjs')
-const { setSessionEmail } = require('./sessionHandler.js');
+const { setSessionUsername } = require('./admin-sessionHandler.js');
 
 
 router.get('/', function (req, res, next) {
@@ -20,16 +20,16 @@ router.post('/', async function (req, res, next) {
   }
   else {
     const user = result[0];
-    // const passwordCompare = await bcrypt.compare(`${req.query.password}`, user.password);
+    const passwordCompare = await bcrypt.compare(`${req.query.password}`, user.password);
     console.log(user);
     console.log("User found")
-    // console.log(passwordCompare)
-    if (req.query.password===user.password) {
+    console.log(passwordCompare)
+    if (passwordCompare) {
       console.log("Logged in.");
       const username = req.query.username;
       req.session.username = username;
       req.session.authorized = true;
-      setSessionEmail(username);
+      setSessionUsername(username);
       console.log("req.session.username:", req.session.username); // Check the value
       res.redirect('/admin-dashboard');
       // res.render('D:/TechAsia11/views/admin-dashboard.ejs')
@@ -37,7 +37,7 @@ router.post('/', async function (req, res, next) {
     //   const email = req.query.email;
     //   req.session.email = email;
     //   req.session.authorized = true;
-    //   setSessionEmail(email);
+    //   setSessionUsername(email);
     }
     else {
       console.log("Login fail.");

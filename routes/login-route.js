@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db');
 const bcrypt = require('bcryptjs')
-const { setSessionEmail } = require('./sessionHandler.js');
+const { setSessionEmail, getSessionEmail } = require('./sessionHandler.js');
 
 var email = ''
 router.get('/', function (req, res, next) {
@@ -30,12 +30,14 @@ router.post('/', async function (req, res, next) {
       req.session.email = email;
       req.session.authorized = true;
       setSessionEmail(email);
-      console.log("req.session.email:", req.session.email); // Check the value
-      res.redirect('/user-profile');
+      console.log("req.session.email:", req.session.email);
+      console.log(getSessionEmail()) // Check the value
     }
     else {
       console.log("Login fail.");
     }
+    res.redirect('/user-profile');
+
 
   }
 

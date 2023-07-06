@@ -5,6 +5,7 @@ var router = express.Router();
 var db = require('../db');
 const bcrypt = require('bcryptjs')
 const { setSessionEmail } = require('./sessionHandler.js');
+const {closeConnection}=require('../db')
 
 
 router.get('/', function (req, res, next) {
@@ -17,6 +18,7 @@ router.post('/', async function (req, res, next) {
     if (err) {
       console.log(err);
     }
+    closeConnection();
     console.log("Chala byee")
     // res.render('D:/TechAsia11/views/login.ejs')
     // res.redirect('http:/localhost:3000/logout')

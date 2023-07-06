@@ -3,6 +3,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "chart.js": "^4.3.0",
+    "chartjs": "^0.3.24",
     "consolidate": "^1.0.1",
     "cors": "^2.8.5",
     "ejs": "^3.1.9",
