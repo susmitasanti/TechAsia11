@@ -7,95 +7,186 @@
 
 
   <style>
-    /* @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); */
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
-    body {
-      background-color: rgb(214, 225, 234);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
 
-    .navbar {
+    nav {
+      display: flex;
+      height: 80px;
       width: 100%;
       background-color: #22196b;
-      overflow: auto;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px 0 100px;
+      flex-wrap: wrap;
     }
 
-    /* Navbar links */
-    .navbar a {
-      float: left;
-      text-align: center;
-      padding: 20px;
+    nav .logo {
+      margin-left: -50px;
+      height: 60px;
+      width: 140px;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 5px;
+    }
+
+    nav ul li a {
       color: white;
       text-decoration: none;
-      font-size: 23px;
+      font-size: 20px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      display: block;
     }
 
-    .navbar img {
-      margin-top: 8px;
-      margin-left: 12px;
-      float: left;
-      height: 50px;
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: white;
+      background: red;
     }
 
+    nav .menu-btn i {
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    @media (max-width: 1000px) {
+      nav {
+        padding: 0 40px 0 50px;
+      }
+    }
+
+    @media (max-width: 920px) {
+      nav .menu-btn i {
+        display: block;
+      }
+
+      #click:checked~.menu-btn i:before {
+        content: "\f00d";
+      }
+
+      nav ul {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background: #22196b;
+        height: 53%;
+        width: 100%;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
+      #click:checked~ul {
+        left: 0;
+      }
+
+      nav ul li {
+        width: 100%;
+        margin: 20px 0;
+      }
+
+      nav ul li a {
+        width: 100%;
+        margin-left: -100%;
+        display: block;
+        font-size: 20px;
+        padding: 20px;
+      }
+
+      #click:checked~ul li a {
+        margin-left: 0px;
+      }
+
+      nav ul li a.active,
+      nav ul li a:hover {
+        background: none;
+        color: red;
+      }
+    }
 
     .dropdown2 {
       float: right;
-      margin-right: 30px;
+      font-size: 20px;
     }
 
 
     .dropdown2 .dropbtn2 {
-      font-size: 23px;
+      font-size: 20px;
       border: none;
       outline: none;
       color: white;
       padding: 20px;
       background-color: inherit;
-      font-family: inherit;
+      font-family: 'Inter', sans-serif;
+      display: block;
     }
 
-
-    /* Add a red background color to navbar links on hover */
-    .navbar a:hover,
-    .navbar p:hover,
-    .dropdown2:hover .dropbtn2 {
+    .dropdown2:hover {
       background-color: red;
     }
 
-    /* Dropdown content (hidden by default) */
+    .dropbtn2 {
+      background-color: none;
+      color: red;
+    }
 
     .dropdown-content2 {
       display: none;
       position: absolute;
       background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.2);
       z-index: 1;
+      min-width: 146px;
+      border: solid 1px;
     }
-
-    /* Links inside the dropdown */
 
     .dropdown-content2 a {
       float: none;
       color: black;
-      padding: 12px 16px;
       text-decoration: none;
       display: block;
-      text-align: left;
-      font-size: larger;
+      text-align: center;
+      font-size: 20px;
+      padding: 12px 12px;
     }
 
-    /* Add a grey background color to dropdown links on hover */
 
     .dropdown-content2 a:hover {
       background-color: #ddd;
+      padding: 12px 12px;
     }
 
-    /* Show the dropdown menu on hover */
-
     .dropdown2:hover .dropdown-content2 {
-
       display: block;
+    }
+
+    #logout {
+      font-size: 15px;
+      background-color: #22196b;
+      color: white;
+      cursor: pointer;
+      margin-left: -30px;
     }
 
     .upper {
@@ -112,10 +203,9 @@
     }
 
     .upper h2 {
-      text-align: center;
       color: black;
-      margin-top: 3px;
-      font-size: 28px;
+      margin-top: 10px;
+      font-size: 20px;
     }
 
     .lower {
@@ -130,20 +220,12 @@
       padding: 10px;
     }
 
-    /* .input-group{
-  height: 40px;
-  margin-top: 12px;
-}
-
-#search , #button{
-  padding: 8px;
-  font-size: 12px;
-} */
     #registration {
-      font-family: Montserrat bold;
+      font-family: 'Inter', sans-serif;
       border-collapse: collapse;
       overflow: hidden;
       width: 100%;
+      font-size: 13px;
     }
 
     #registration td,
@@ -174,29 +256,22 @@
       cursor: pointer;
     }
 
-    .input-group,
     #search1 {
       padding: 10px;
-      /* border: 2px solid rgb(225, 71, 71); */
-      margin-top: 4px;
-      /* margin-left: 470px; */
+      margin-top: 14px;
       font-size: 15px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+      font-family: 'Inter', sans-serif;
+      border: 1.5px solid #22196b;
     }
 
     #button {
-      padding: 8px;
+      padding: 9.5px;
       border: 2px solid #22196b;
-      margin-top: 5px;
-      font-size: 17px;
+      margin-top: 3.5px;
+      font-size: 15px;
       background-color: #22196b;
       color: white;
       cursor: pointer;
-    }
-
-    #search1 {
-      border: 1.5px solid #22196b;
     }
 
     #graph,
@@ -205,59 +280,59 @@
       background-color: #22196b;
       color: white;
       cursor: pointer;
-    }
+      font-size: 13px;
 
-    #logout {
-      font-size: 17px;
-      background-color: #22196b;
-      color: white;
-      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
-  <div class="navbar">
-    <img src="techAsia-LOGO_horizontal1028.png" alt="">
-    <a><i class="fa fa-fw fa-search"></i> Users Data</a>
-    <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a>
-    <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a>
+  <nav>
+    <img src="techAsia-LOGO_horizontal1028.png" class="logo">
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+      <i class="fa fa-fw fa-bars"></i>
+    </label>
+    <ul>
+      <li><a href="http://localhost:3000/admin-dashboard"><i class="fa fa-fw fa-search"></i> Users Data</a></li>
+      <li><a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a></li>
+      <li><a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a></li>
+    </ul>
     <div class="dropdown2">
       <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content2">
-        <a href="http://localhost:3000/admin-profile">Admin Profile</a>
+        <a href="http://localhost:3000/admin-profile">Profile</a>
+        <a href="http://localhost:3000/admin-registration">New Admin</a>
         <a href="#">
           <form id="Profile" action="/logout" method="GET" enctype="text/plain">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="logout">Logout</button>
           </form>
         </a>
-      </div>
-    </div>
+  </nav>
+
+
+
+  <div class="upper" align="center">
+    <h2>USER DATA INFORMATION</h2>
+    <input type="text" id="search1" placeholder="Email">
+    <button type="search" id="button" onclick="myFunction1()">Search</button>
   </div>
-
-
-  <div class="container">
-    <div class="upper" align="center">
-      <h2>USER DATA INFORMATION</h2>
-      <input type="text" id="search1" placeholder="Email">
-      <button type="search" id="button" onclick="myFunction1()">Search</button>
-    </div>
-    <div class="lower">
-      <br>
-      <table class="table" id="registration">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Activity</th>
-            <th>Graph</th>
-            <th>Function</th>
-          </tr>
-        </thead>
+  <div class="lower">
+    <br>
+    <table class="table" id="registration">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Activity</th>
+          <th>Graph</th>
+          <th>Function</th>
+        </tr>
+      </thead>
 
         <tbody>
           <% users.forEach(function(user, index) { %>

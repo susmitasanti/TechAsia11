@@ -11,17 +11,44 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
         body {
             background-image: url(technology-background_23-2148458951.avif);
             font-family: 'Inter', sans-serif;
         }
 
+        nav {
+
+
+            display: flex;
+            height: 80px;
+            width: 100%;
+            background-color: #22196b;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px 0 100px;
+            flex-wrap: wrap;
+        }
+
+        nav .logo {
+            margin-left: -50px;
+            height: 70px;
+            width: 190px;
         .navbar {
             width: 100%;
             background-color: #22196b;
             overflow: hidden;
         }
 
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
         .navbar a {
             float: left;
             text-align: center;
@@ -32,6 +59,8 @@
             margin-left: 0 px 12px;
         }
 
+        nav ul li {
+            margin: 0 5px;
         .navbar img {
             margin-top: 2px;
             margin-left: 12px;
@@ -39,12 +68,24 @@
             height: 60px;
             width: 140px;
         }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            display: block;
         .dropdown2 {
             float: right;
             margin-right: 30px;
             font-size: 20px;
         }
 
+        nav ul li a.active,
+        nav ul li a:hover {
+            color: white;
+            background: red;
 
         .dropdown2 .dropbtn2 {
             font-size: 20px;
@@ -56,6 +97,11 @@
             font-family: 'Inter', sans-serif;
         }
 
+        nav .menu-btn i {
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
 
         .navbar a:hover,
         .navbar p:hover,
@@ -63,6 +109,8 @@
             background-color: red;
         }
 
+        input[type="checkbox"] {
+            display: none;
         .dropdown-content2 {
             display: none;
             position: absolute;
@@ -73,6 +121,10 @@
             border: solid 1px;
         }
 
+        @media (max-width: 1000px) {
+            nav {
+                padding: 0 40px 0 50px;
+            }
         .dropdown-content2 a {
             float: none;
             color: black;
@@ -83,19 +135,82 @@
             padding: 12px 16px;
         }
 
+        @media (max-width: 920px) {
+            nav .menu-btn i {
+                display: block;
+            }
+
+            #click:checked~.menu-btn i:before {
+                content: "\f00d";
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: #22196b;
+                height: 53%;
+                width: 100%;
+                text-align: center;
+                display: block;
+                transition: all 0.3s ease;
+                z-index: 1;
+            }
+
+            #click:checked~ul {
+                left: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                margin: 20px 0;
+            }
+
+            nav ul li a {
+                width: 100%;
+                margin-left: -100%;
+                display: block;
+                font-size: 20px;
+                padding: 20px;
+            }
+
+            #click:checked~ul li a {
+                margin-left: 0px;
+            }
+
+            nav ul li a.active,
+            nav ul li a:hover {
+                background: none;
+                color: red;
+            }
 
         .dropdown-content2 a:hover {
             background-color: #ddd;
         }
 
+        .dropdown2 {
+            float: right;
+            font-size: 20px;
         .dropdown2:hover .dropdown-content2 {
             display: block;
         }
 
+
+        .dropdown2 .dropbtn2 {
+            font-size: 20px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 20px;
+            background-color: inherit;
+            font-family: 'Inter', sans-serif;
+            display: block;
         .container {
             font-family: 'Inter', sans-serif;
         }
 
+        .dropdown2:hover {
+            background-color: red;
         .card {
             background-color: #fff;
             border-radius: 9px;
@@ -112,6 +227,19 @@
             word-wrap: break-word;
         }
 
+        .dropbtn2 {
+            background-color: none;
+            color: red;
+        }
+
+        .dropdown-content2 {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            min-width: 146px;
+            border: solid 1px;
         .overlay {
             position: absolute;
             border-top-left-radius: 9px;
@@ -122,6 +250,14 @@
 
         }
 
+        .dropdown-content2 a {
+            float: none;
+            color: black;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-size: 20px;
+            padding: 12px 12px;
         .card-block {
             position: absolute;
             left: 35%;
@@ -133,13 +269,26 @@
 
         }
 
+
+        .dropdown-content2 a:hover {
+            background-color: #ddd;
+            padding: 12px 12px;
+        }
         .heading {
 
+        .dropdown2:hover .dropdown-content2 {
+            display: block;
             font-size: 23px;
             margin-bottom: 20px;
             font-weight: 600;
         }
 
+        #logout {
+            font-size: 15px;
+            background-color: #22196b;
+            color: white;
+            cursor: pointer;
+            margin-left: -30px;
         .row {
             display: flex;
             flex-wrap: wrap;
@@ -153,15 +302,98 @@
             padding-bottom: 1.25rem;
         }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url(technology-background_23-2148458951.avif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
         .card .card-block h5 {
             color: gray;
         }
 
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
+            position: relative;
+            overflow: hidden;
+            width: 600px;
+            height: 400px;
+            margin: auto;
+            margin-top: 80px;
 
         .card .card-block p {
             line-height: 2px;
             margin-bottom: 10px;
             margin-top: 0;
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-size: 18px;
+            color: #212529;
+        }
+
+        .left {
+            background: linear-gradient(to right, rgb(30, 30, 132), #2b1653);
+            color: #FFFFFF;
+            position: absolute;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 35%;
+
+        .column-left {
+            float: left;
+            display: block;
+            width: 48%;
+        }
+
+        .card {
+            position: absolute;
+            left: 35%;
+            width: 65%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        .column-right {
+            float: right;
+            display: block;
+            width: 48%;
+        }
+
+        .heading {
+            font-size: 23px;
+            line-height: 2;
+            margin: 18px;
+            font-weight: 500;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #212529;
+            text-align: left;
+            padding-left: 1.25rem;
+            padding-bottom: 1.25rem;
+            margin: 10px;
+        }
+
+        .card h5 {
+            color: gray;
+        }
+
+
+        .card p {
+            line-height: 2px;
+            margin: 20px;
             display: block;
             margin-block-start: 1em;
             margin-block-end: 1em;
@@ -184,11 +416,40 @@
         }
 
         .social-link li {
+        .social-link li {
             display: inline-block;
         }
 
         .social-link li a {
+        .social-link li a {
             font-size: 20px;
+            margin: 0px 0px 0px 20px;
+        }
+
+        .change {
+            color: #fff;
+            background-color: #22196b;
+            margin: 20px;
+            border: 2px solid #22196b;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 5px 10px;
+            font-size: medium;
+        }
+
+        .left img {
+            border-radius: 5px;
+            height: 120px;
+            margin-top: -30px;
+        }
+
+        .left p {
+            font-size: 28px;
+            text-align: center;
+            color: white;
+            margin: 20px;
             margin: 0 10px 0 0;
         }
 
@@ -205,6 +466,11 @@
             color: white;
         }
 
+        .left h5 {
+            margin-top: -10px;
+            color: rgba(255, 255, 255, 0.84);
+            font-size: 18px;
+            text-align: center;
         .left h5 {
             margin-top: -10px;
             color: rgba(255, 255, 255, 0.84);

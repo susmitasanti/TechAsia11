@@ -6,48 +6,129 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
-    .navbar {
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    nav {
+      display: flex;
+      height: 80px;
       width: 100%;
       background-color: #22196b;
-      height: 80px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px 0 100px;
+      flex-wrap: wrap;
     }
 
-    /* Navbar links */
-    .navbar a {
-      float: left;
-      text-align: center;
-      padding: 20px;
-      color: white;
-      text-decoration: none;
-      font-size: 23px;
-      margin-top: 7px;
-      margin-left: 12px;
-    }
-
-    .navbar img {
-      margin-top: 10px;
-      margin-left: 12px;
-      float: left;
+    nav .logo {
+      margin-left: -50px;
       height: 60px;
       width: 140px;
     }
 
-    .navbar a:hover {
-      background-color: red;
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
     }
 
-    #Profile {
-      float: right;
-      margin-right: 23px;
+    nav ul li {
+      margin: 0 5px;
     }
 
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 8px 15px;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: white;
+      background: red;
+    }
+
+    nav .menu-btn i {
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    @media (max-width: 1000px) {
+      nav {
+        padding: 0 40px 0 50px;
+      }
+    }
+
+    @media (max-width: 920px) {
+      nav .menu-btn i {
+        display: block;
+      }
+
+      #click:checked~.menu-btn i:before {
+        content: "\f00d";
+      }
+
+      nav ul {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background: #22196b;
+        height: 53%;
+        width: 100%;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+      }
+
+      #click:checked~ul {
+        left: 0;
+      }
+
+      nav ul li {
+        width: 100%;
+        margin: 20px 0;
+      }
+
+      nav ul li a {
+        width: 100%;
+        margin-left: -100%;
+        display: block;
+        font-size: 20px;
+      }
+
+      #click:checked~ul li a {
+        margin-left: 0px;
+      }
+
+      nav ul li a.active,
+      nav ul li a:hover {
+        background: none;
+        color: red;
+      }
+    }
     #Profile button {
       background-color: rgb(30, 30, 132);
       color: white;
-      font-size: 18px;
+      font-size: 15px;
       padding: 6px;
-      margin-top: 21px;
       border: 2px solid #e0e0e0;
+      margin-left:10px ;
+      margin-top: 5px;
     }
 
     .upper {
@@ -55,28 +136,16 @@
       border-radius: 10px;
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22);
-      position: relative;
-      margin-top: 12px;
-      overflow: auto;
-      height: auto;
-      padding: 10px;
-    }
-
-    /* .lower {
-      background-color: rgb(232, 238, 240);
-      border-radius: 10px;
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-        0 10px 10px rgba(0, 0, 0, 0.22);
-      position: relative;
       overflow: auto;
       margin-top: 20px;
-      min-height: 310px;
-      max-height: 310px;
+      height: auto;
       padding: 10px;
-    } */
+      z-index: -1;
+    }
+
 
     #registration {
-      font-family: Montserrat bold;
+      font-family: 'Inter', sans-serif;
       border-collapse: collapse;
       overflow: hidden;
       width: 100%;
@@ -87,6 +156,8 @@
       border: 2px solid #ddd;
       padding: 8px;
       overflow: auto;
+      font-size: 13px;
+
     }
 
     #registration tr:nth-child(even) {
@@ -103,7 +174,6 @@
       text-align: left;
       background-color: #233789;
       color: white;
-      font-size: 17px;
     }
   </style>
 
@@ -111,30 +181,36 @@
 </head>
 
 <body>
-  <div class="navbar">
-    <img src="techAsia-LOGO_horizontal1028.png" alt="">
-    &nbsp; &nbsp;
-    <a href="http://localhost:3000/user-profile"><i class="fa fa-fw fa-user"></i>Profile</a>
-    &nbsp; &nbsp;
-    <a href="http://localhost:3000/dashboard"><i class="fa fa-fw fa-calculator"></i>Activity</a>
-    &nbsp; &nbsp;
-    <a href="http://localhost:3000/mydevices"><i class="fa fa-fw fa-calculator"></i>My Devices</a>
-    &nbsp; &nbsp;
-    <a href="http://localhost:3000/graph"><i class="fa fa-fw fa-pie-chart"></i>Graphs</a>
+  <nav>
+    <img src="techAsia-LOGO_horizontal1028.png" class="logo">
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+      <i class="fa fa-fw fa-bars"></i>
+    </label>
+    <ul>
+      <li><a href="http://localhost:3000/user-profile"><i class="fa fa-fw fa-user"></i>Profile</a></li>
+      <li><a href="http://localhost:3000/dashboard"><i class="fa fa-fw fa-calculator"></i>Activity</a></li>
+      <li><a href="http://localhost:3000/mydevices"><i class="fa fa-fw fa-mobile"></i>My Devices</a></li>
+      <li><a href="http://localhost:3000/graph"><i class="fa fa-fw fa-line-chart"></i>Graphs</a></li>
+      <li>
+        <div align="center">
+          <form id="Profile" action="/logout" method="GET" enctype="text/plain">
+            <button>Logout</button>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </nav>
 
-    <form id="Profile" action="/logout" method="GET" enctype="text/plain">
-      <button>Logout</button>
-    </form>
-  </div>
   <div class="container">
     <div class="upper">
       <table class="table" id="registration">
         <thead>
           <tr>
+            <th>Sr No.</th>
+            <th>MAC ID</th>
             <th>Count</th>
             <th>Session Duration</th>
-            <th>MAC ID</th>
-            <th>Time</th>
             <th>Date(YYYY-MM-DD)</th>
 
           </tr>
@@ -146,16 +222,13 @@
                 <%= index + 1 %>
               </td>
               <td>
+                <%= user.mac_id %>
+              </td>
+              <td>
                 <%= user.count %>
               </td>
               <td>
                 <%= user.session_time %>
-              </td>
-              <td>
-                <%= user.mac_id %>
-              </td>
-              <td>
-                <%= user.time %>
               </td>
               <td>
                 <%= new Date(user.date.getTime() + (24 * 60 * 60 * 1000)).toISOString().split('T')[0] %>
