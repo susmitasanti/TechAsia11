@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 
 
 router.get('/', admin_requireLogin, async function (req, res, next) {
-  res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'changed' });
+  res.render('D:/TechAsia11/views/admin-changePassword.ejs');
 });
 
 router.post('/', async function (req, res, next) {
@@ -21,7 +21,7 @@ router.post('/', async function (req, res, next) {
     }
     else {
       console.log('seddddddddddddddddddd')
-      res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'error' });
+      res.render('D:/TechAsia11/views/admin-changePassword.ejs');
     }
 
   }
@@ -39,7 +39,7 @@ router.post('/', async function (req, res, next) {
     }
     else {
       console.log('seddddddddddddddddddd')
-      res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'error' });
+      res.render('D:/TechAsia11/views/admin-changePassword.ejs');
     }
   }
   else if (req.query.name != '' && req.query.phone == '' && req.query.email != '' && req.query.newPassword != '' && req.query.repeatPassword != '') {
@@ -51,7 +51,7 @@ router.post('/', async function (req, res, next) {
     }
     else {
       console.log('seddddddddddddddddddd')
-      res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'error' });
+      res.render('D:/TechAsia11/views/admin-changePassword.ejs');
     }
   }
   else if (req.query.name != '' && req.query.phone != '' && req.query.email == '' && req.query.newPassword != '' && req.query.repeatPassword != '') {
@@ -63,7 +63,7 @@ router.post('/', async function (req, res, next) {
     }
     else {
       console.log('seddddddddddddddddddd')
-      res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'error' });
+      res.render('D:/TechAsia11/views/admin-changePassword.ejs');
     }
   }
   else if (req.query.name != '' && req.query.phone != '' && req.query.email != '' && req.query.newPassword == '') {
@@ -79,7 +79,7 @@ router.post('/', async function (req, res, next) {
     }
     else {
       console.log('seddddddddddddddddddd')
-      res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'error' });
+      res.render('D:/TechAsia11/views/admin-changePassword.ejs');
     }
   }
   else if (req.query.name == '' && req.query.phone != '' && req.query.email == '' && req.query.newPassword != '' && req.query.repeatPassword != '') {
@@ -91,7 +91,7 @@ router.post('/', async function (req, res, next) {
     }
     else {
       console.log('seddddddddddddddddddd')
-      res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'error' });
+      res.render('D:/TechAsia11/views/admin-changePassword.ejs');
     }
   }
   else if (req.query.name == '' && req.query.phone != '' && req.query.email != '' && req.query.newPassword == '') {
@@ -107,7 +107,7 @@ router.post('/', async function (req, res, next) {
     }
     else {
       console.log('seddddddddddddddddddd')
-      res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'error' });
+      res.render('D:/TechAsia11/views/admin-changePassword.ejs');
     }
   }
   else if (req.query.name != '' && req.query.phone == '' && req.query.email != '' && req.query.newPassword == '') {
@@ -127,7 +127,7 @@ router.post('/', async function (req, res, next) {
     }
     else {
       console.log('seddddddddddddddddddd')
-      res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'error' });
+      res.render('D:/TechAsia11/views/admin-changePassword.ejs');
     }
 
   }
@@ -151,7 +151,7 @@ router.post('/', async function (req, res, next) {
   }
   else {
     console.log('seddddddddddddddddddd')
-    res.render('D:/TechAsia11/views/admin-changePassword.ejs', { alert: 'error' });
+    res.render('D:/TechAsia11/views/admin-changePassword.ejs');
   }
 });
 

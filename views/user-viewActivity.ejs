@@ -94,6 +94,7 @@
         text-align: center;
         display: block;
         transition: all 0.3s ease;
+        z-index: 1;
       }
 
       #click:checked~ul {
@@ -141,7 +142,6 @@
       margin-top: 20px;
       height: 120px;
       padding: 10px;
-      z-index: -1;
     }
 
     .lower {
@@ -153,7 +153,6 @@
       margin-top: 20px;
       height: auto;
       padding: 10px;
-      z-index: -1;
     }
 
 
@@ -242,12 +241,12 @@
   <div class="container">
     <div class="upper" align="center">
       <h2>Search By Date</h2>
-      <form action="/view-activity" method="POST">
+      <!-- <form action="/view-activity" method="POST"> -->
         <input type="date" id="searchDate" placeholder="Date" />
-        <button type="submit" class="btn btn-primary" id="searchDateButton">
+        <button type="submit" class="btn btn-primary" id="searchDateButton" onclick="myFunction1()">
           <i class="fa fa-fw fa-search"></i>
         </button>
-      </form>
+      <!-- </form> -->
     </div>
     <div class="lower">
       <table class="table" id="registration">
@@ -267,14 +266,17 @@
                 <%= index + 1 %>
               </td>
               <td>
-                <%= user.mac_id %>
-              </td>
-              <td>
                 <%= user.count %>
               </td>
               <td>
                 <%= user.session_time %>
               </td>
+              <td>
+                <%= user.mac_id %>
+              </td>
+              <!-- <td>
+                <%= user.date.toISOString().split('T')[0] %>
+              </td> -->
               <td>
                 <%= new Date(user.date.getTime() + (24 * 60 * 60 * 1000)).toISOString().split('T')[0] %>
               </td>              
@@ -328,26 +330,6 @@
         }
       }
     };
-    document.getElementById("searchDateButton").addEventListener("click", async function (event) {
-      const newDate = document.getElementById("searchDate").value;
-      fetch(`http://localhost:3000/setDate?newDate=${newDate}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log("Hulloo")
-          console.log(data);
-        })
-        .catch(error => {
-          console.log("Bubyee")
-
-          console.error(error);
-        });
-
-    });
   </script>
 
 </body>

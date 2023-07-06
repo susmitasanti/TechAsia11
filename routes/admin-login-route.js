@@ -5,9 +5,9 @@ var db = require('../db');
 const bcrypt = require('bcryptjs')
 const { setSessionUsername } = require('./admin-sessionHandler.js');
 
-
+var username=''
 router.get('/', function (req, res, next) {
-  res.render('D:/TechAsia11/views/admin-login.ejs')
+  res.render('D:/TechAsia11/views/admin-login.ejs', { alert: false })
 });
 router.post('/', async function (req, res, next) {
   const result = await db.query(
@@ -17,6 +17,7 @@ router.post('/', async function (req, res, next) {
   if (result.length === 0) {
     console.log(result)
     console.log("User not found.")
+    res.send('success')
   }
   else {
     const user = result[0];
@@ -26,12 +27,14 @@ router.post('/', async function (req, res, next) {
     console.log(passwordCompare)
     if (passwordCompare) {
       console.log("Logged in.");
-      const username = req.query.username;
+      username = req.query.username;
       req.session.username = username;
       req.session.authorized = true;
       setSessionUsername(username);
       console.log("req.session.username:", req.session.username); // Check the value
-      res.redirect('/admin-dashboard');
+      // res.redirect('/admin-dashboard');
+      res.send('success');
+
       // res.render('D:/TechAsia11/views/admin-dashboard.ejs')
 
     //   const email = req.query.email;
@@ -41,6 +44,7 @@ router.post('/', async function (req, res, next) {
     }
     else {
       console.log("Login fail.");
+      res.send('success')
     }
 
   }

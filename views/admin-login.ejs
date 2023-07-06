@@ -150,7 +150,7 @@
 	<div class="container" id="container">
 		<div class="form-container sign-in-container">
 
-			<form action="/admin-dashboard" method="GET" enctype="text/plain">
+			<form action="/admin-dashboard" method="GET" enctype="text/plain" onsubmit="return false;">
 				<h1>Login</h1>
 				<input type="text" placeholder="Username" id="username" required />
 				<input type="password" placeholder="Password" id="password" required>
@@ -188,14 +188,16 @@
 				.then(response => response.json())
 				.then(data => {
 					// Handle the API response data
-					console.log("Hulloo")
-					console.log(data);
+					// console.log("Hulloo")
+					// console.log(data);
+					window.location='/admin-dashboard';
 				})
 				.catch(error => {
 					// Handle any errors that occurred during the API request
-					console.log("Bubyee")
+					// console.log("Bubyee")
 
-					console.error(error);
+					// console.error(error);
+					window.location='/admin-dashboard';
 				});
 
 		});
@@ -206,6 +208,11 @@
 			const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
 			passwordInput.setAttribute("type", type)
 		});
+
+		const alert='<%-alert%>'
+					if(alert=='true'){
+						let conf=confirm("Please enter Valid Credentials")
+					}
 	</script>
 </body>
 
