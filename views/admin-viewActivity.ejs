@@ -5,43 +5,127 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
-    body {
-      background-color: rgb(214, 225, 234);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
 
-    .navbar {
+    nav {
+      display: flex;
+      height: 80px;
       width: 100%;
       background-color: #22196b;
-      overflow: hidden;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px 0 100px;
+      flex-wrap: wrap;
     }
 
-    .navbar a {
-      float: left;
-      text-align: center;
-      padding: 20px;
-      color: white;
-      text-decoration: none;
-      font-size: 20px;
-      margin-left: 0 px 12px;
-    }
-
-    .navbar img {
-      margin-top: 2px;
-      margin-left: 12px;
-      float: left;
+    nav .logo {
+      margin-left: -50px;
       height: 60px;
       width: 140px;
     }
 
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 5px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: white;
+      background: red;
+    }
+
+    nav .menu-btn i {
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    @media (max-width: 1000px) {
+      nav {
+        padding: 0 40px 0 50px;
+      }
+    }
+
+    @media (max-width: 920px) {
+      nav .menu-btn i {
+        display: block;
+      }
+
+      #click:checked~.menu-btn i:before {
+        content: "\f00d";
+      }
+
+      nav ul {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background: #22196b;
+        height: 53%;
+        width: 100%;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
+      #click:checked~ul {
+        left: 0;
+      }
+
+      nav ul li {
+        width: 100%;
+        margin: 20px 0;
+      }
+
+      nav ul li a {
+        width: 100%;
+        margin-left: -100%;
+        display: block;
+        font-size: 20px;
+        padding: 20px;
+      }
+
+      #click:checked~ul li a {
+        margin-left: 0px;
+      }
+
+      nav ul li a.active,
+      nav ul li a:hover {
+        background: none;
+        color: red;
+      }
+    }
 
     .dropdown2 {
       float: right;
-      margin-right: 30px;
       font-size: 20px;
     }
 
@@ -54,13 +138,16 @@
       padding: 20px;
       background-color: inherit;
       font-family: 'Inter', sans-serif;
+      display: block;
     }
 
-
-    .navbar a:hover,
-    .navbar p:hover,
-    .dropdown2:hover .dropbtn2 {
+    .dropdown2:hover {
       background-color: red;
+    }
+
+    .dropbtn2 {
+      background-color: none;
+      color: red;
     }
 
     .dropdown-content2 {
@@ -93,6 +180,13 @@
       display: block;
     }
 
+    #logout {
+      font-size: 15px;
+      background-color: #22196b;
+      color: white;
+      cursor: pointer;
+      margin-left: -30px;
+    }
     .lower {
       background-color: rgb(232, 238, 240);
       border-radius: 10px;
@@ -141,15 +235,12 @@
       cursor: pointer;
     }
 
-    .input-group,
     #search1 {
       padding: 10px;
-      margin-top: 4px;
-      margin-left: 230px;
+      margin-top: 14px;
       font-size: 15px;
       font-family: 'Inter', sans-serif;
-      position: relative;
-
+      border: 1.5px solid #22196b;
     }
 
     #button {
@@ -162,10 +253,6 @@
       cursor: pointer;
     }
 
-    #search1 {
-      border: 1.5px solid #22196b;
-    }
-
     #graph,
     #activity {
       border: 2px solid #22196b;
@@ -175,25 +262,22 @@
       font-size: 13px;
 
     }
-
-    #logout {
-      font-size: 15px;
-      background-color: #22196b;
-      color: white;
-      cursor: pointer;
-      margin-left: -30px;
-    }
   </style>
-
 
 </head>
 
 <body>
-  <div class="navbar">
-    <img src="techAsia-LOGO_horizontal1028.png" alt="">
-    <a href="http://localhost:3000/admin-dashboard"><i class="fa fa-fw fa-search"></i> Users Data</a>
-    <a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a>
-    <a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a>
+  <nav>
+    <img src="techAsia-LOGO_horizontal1028.png" class="logo">
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+      <i class="fa fa-fw fa-bars"></i>
+    </label>
+    <ul>
+      <li><a href="http://localhost:3000/admin-dashboard"><i class="fa fa-fw fa-search"></i> Users Data</a></li>
+      <li><a href="http://localhost:3000/admin-activity"><i class="fa fa-fw fa-calculator"></i> Activity</a></li>
+      <li><a href="http://localhost:3000/register"><i class="fa fa-fw fa-users"></i> Add User</a></li>
+    </ul>
     <div class="dropdown2">
       <button class="dropbtn2" id="activity2"><i class="fa fa-fw fa-user"></i> Admin
         <i class="fa fa-caret-down"></i>
@@ -206,9 +290,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="logout">Logout</button>
           </form>
         </a>
-      </div>
-    </div>
-  </div>
+  </nav>
   <div class="container">
     <div class="lower">
       <table class="table" id="registration">

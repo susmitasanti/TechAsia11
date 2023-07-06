@@ -33,7 +33,13 @@ var set_date = require("./routes/date-route")
 var admin_set_date = require("./routes/admin-date-route")
 var admin_graph = require("./routes/admin-graph-route")
 var admin_activity = require("./routes/admin-activity-route")
-var admin_viewActivity=require("./routes/admin-viewActivity-route")
+var admin_viewActivity = require("./routes/admin-viewActivity-route")
+var admin_registration = require("./routes/admin-registration-route")
+var admin_changePassword = require("./routes/admin-changePassword-route")
+var my_devices=require("./routes/mydevices-route")
+var user_viewActivity=require("./routes/user-viewActivity-route")
+var userViewActivity_searchByDate = require("./routes/userViewActivity_searchByDate")
+var admin_viewGraph=require('./routes/admin-viewGraph-route')
 
 app.use(express.json());
 
@@ -72,6 +78,13 @@ app.use('/admin-setDate',admin_set_date)
 app.use('/admin-graph',admin_graph)
 app.use('/admin-activity',admin_activity)
 app.use('/admin-viewActivity', admin_viewActivity)
+app.use('/admin-registration',admin_registration)
+app.use('/admin-changePassword', admin_changePassword)
+app.use('/mydevices', my_devices)
+app.use('/user-viewActivity', user_viewActivity)
+app.use('/view-activity', userViewActivity_searchByDate)
+app.use('/admin-viewGraph', admin_viewGraph)
+
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {

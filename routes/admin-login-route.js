@@ -4,6 +4,7 @@ var router = express.Router();
 var db = require('../db');
 const bcrypt = require('bcryptjs')
 const { setSessionEmail } = require('./sessionHandler.js');
+const {setSessionUsername}=require('./admin-sessionHandler')
 
 
 router.get('/', function (req, res, next) {
@@ -29,7 +30,7 @@ router.post('/', async function (req, res, next) {
       const username = req.query.username;
       req.session.username = username;
       req.session.authorized = true;
-      setSessionEmail(username);
+      setSessionUsername(username);
       console.log("req.session.username:", req.session.username); // Check the value
       res.redirect('/admin-dashboard');
       // res.render('D:/TechAsia11/views/admin-dashboard.ejs')

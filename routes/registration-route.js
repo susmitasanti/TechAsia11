@@ -1,6 +1,4 @@
 var express = require('express');
-// var path = require()
-const app = express();
 var router = express.Router();
 var db = require('../db');
 const bcrypt = require('bcryptjs')
