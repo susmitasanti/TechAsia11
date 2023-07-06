@@ -6,6 +6,7 @@ const { requireLogin } = require('./middleware')
 const {setSessionMac, getSessionMac} = require('./macHandler')
 
 router.get('/', requireLogin, async function (req, res, next) {
+  console.log(req.query.mac_id)
   setSessionMac(req.query.mac_id)
   const result = await db.query(
     `SELECT * FROM statistics WHERE mac_id='${req.query.mac_id}';`
@@ -13,6 +14,6 @@ router.get('/', requireLogin, async function (req, res, next) {
   res.render('D:/TechAsia11/views/user-viewActivity.ejs', { users: result });
 });
 router.post('/',requireLogin, async function(req, res, next){
-    res.redirect(`/user-viewActivity?mac_id=${req.query.mac_id}`)
+    res.redirect(`/user-viewActivity?mac_id=${getSessionMac()}`)
 })
 module.exports = router;
