@@ -51,8 +51,6 @@ router.post('/', async function (req, res, next) {
       // res.render('D:/TechAsia11/views/login.ejs', { alert: true })
       res.send('success')
     }
-    res.redirect('/user-profile');
-
 
 
   }

@@ -65,7 +65,6 @@ router.post('/', async function (req, res, next) {
       const salt = await bcrypt.genSaltSync(10);
       const secPass = bcrypt.hashSync(`${req.query.newPassword}`, salt)
       db.query(`UPDATE registration SET name='${req.query.name}', phone='${req.query.phone}',password = '${secPass}' WHERE email='${getSessionEmail()}';`)
-      setSessionEmail(req.query.email)
 
     }
     else {
@@ -99,7 +98,6 @@ router.post('/', async function (req, res, next) {
       const salt = await bcrypt.genSaltSync(10);
       const secPass = bcrypt.hashSync(`${req.query.newPassword}`, salt)
       db.query(`UPDATE registration SET phone='${req.query.phone}',password = '${secPass}' WHERE email='${getSessionEmail()}';`)
-      setSessionEmail(req.query.email)
 
     }
     else {
@@ -119,7 +117,6 @@ router.post('/', async function (req, res, next) {
       const salt = await bcrypt.genSaltSync(10);
       const secPass = bcrypt.hashSync(`${req.query.newPassword}`, salt)
       db.query(`UPDATE registration SET name='${req.query.name}',password = '${secPass}' WHERE email='${getSessionEmail()}';`)
-      setSessionEmail(req.query.email)
 
     }
     else {
@@ -136,7 +133,6 @@ router.post('/', async function (req, res, next) {
   else if (req.query.name != '' && req.query.phone != '' && req.query.email == '' && req.query.newPassword == '') {
     console.log("Hullooooooooooooooooooooooo")
     db.query(`UPDATE registration SET name='${req.query.name}', phone='${req.query.phone}';`)
-    setSessionEmail(req.query.email)
 
   }
   else if (req.query.name == '' && req.query.phone == '' && req.query.email == '' && req.query.newPassword != '' && req.query.repeatPassword != '') {
@@ -145,7 +141,6 @@ router.post('/', async function (req, res, next) {
       const salt = await bcrypt.genSaltSync(10);
       const secPass = bcrypt.hashSync(`${req.query.newPassword}`, salt)
       db.query(`UPDATE registration SET password = '${secPass}' WHERE email='${getSessionEmail()}';`)
-      setSessionEmail(req.query.email)
 
     }
     else {

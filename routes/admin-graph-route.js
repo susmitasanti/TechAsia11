@@ -12,7 +12,7 @@ router.get('/', admin_requireLogin, async function (req, res, next) {
   console.log(`setSessionEmail:${getSessionEmail()}`)
 
   const result = await db.query(
-    `SELECT DISTINCT statistics.mac_id FROM registration INNER JOIN statistics ON registration.phone = statistics.phone1 WHERE registration.email='${req.query.email}';`
+    `SELECT DISTINCT statistics_graph.mac_id FROM registration INNER JOIN statistics_graph ON registration.phone = statistics_graph.phone1 WHERE registration.email='${req.query.email}';`
   )
 
   const graphResults = [];
@@ -20,7 +20,7 @@ router.get('/', admin_requireLogin, async function (req, res, next) {
   for (const row of result) {
     const macId = row.mac_id;
     const graph = await db.query(
-      `SELECT * FROM statistics WHERE phone1=
+      `SELECT * FROM statistics_graph WHERE phone1=
             (SELECT phone
               FROM registration as r
               WHERE r.email='${req.query.email}') AND date='${getDate()}' AND mac_id='${macId}';`

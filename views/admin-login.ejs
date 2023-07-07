@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Login Form</title>
+	<title>Admin-Login</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
@@ -14,7 +14,7 @@
 
 		body {
 			font-family: 'Inter', sans-serif;
-			background-image: url(technology-background_23-2148458951.avif);
+			background-image: url(background.png);
 			background-repeat: no-repeat;
 			background-size: cover;
 			display: flex;
@@ -48,7 +48,6 @@
 			padding: 12px 24px;
 			letter-spacing: 1px;
 			text-transform: uppercase;
-			margin-top: 15px;
 		}
 
 		button:active {
@@ -129,6 +128,7 @@
 			text-align: center;
 			height: 100%;
 			width: 50%;
+
 		}
 
 		.overlay-right {
@@ -138,10 +138,20 @@
 
 		.fa-eye {
 			position: relative;
+			bottom: 7.5%;
+			left: 50%;
 			cursor: pointer;
 			color: rgb(135, 151, 185);
-			left: 50%;
-			bottom: 7.5%;
+		}
+
+		span {
+			font-size: 14px;
+		}
+		span1{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
 		}
 	</style>
 </head>
@@ -155,6 +165,8 @@
 				<input type="text" placeholder="Username" id="username" required />
 				<input type="password" placeholder="Password" id="password" required>
 				<i class="fa-solid fa-eye" id="eye"></i>
+				<!-- <span1 for="rememberPassword">Remember Password <input type="checkbox"
+					id="rememberPassword"></span1> -->
 				<a href="">Forgot your password?</a>
 				<div class="btn">
 					<button id="login">Sign In</button>
@@ -208,6 +220,26 @@
 			const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
 			passwordInput.setAttribute("type", type)
 		});
+		// function savePassword() {
+		// 				const passwordInput = document.getElementById("password");
+		// 				const rememberCheckbox = document.getElementById("rememberPassword");
+
+		// 				if (rememberCheckbox.checked) {
+		// 					const password = passwordInput.value;
+		// 					localStorage.setItem("rememberedPassword", password);
+		// 				}
+		// 			}
+
+		// 			// Function to load the saved password from localStorage and autofill the password field
+		// 			function loadPassword() {
+		// 				const passwordInput = document.getElementById("password");
+		// 				const rememberedPassword = localStorage.getItem("rememberedPassword");
+
+		// 				if (rememberedPassword) {
+		// 					passwordInput.value = rememberedPassword;
+		// 				}
+		// 			};
+		// 			window.addEventListener("load", loadPassword);
 
 		const alert='<%-alert%>'
 					if(alert=='true'){

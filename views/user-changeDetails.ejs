@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Change Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
     <style>
@@ -18,6 +18,27 @@
             font-family: 'Inter', sans-serif;
         }
 
+        .upper{
+      background-color: rgb(232, 238, 240);
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+      overflow: auto;
+      margin-top: 20px;
+      height: 120px;
+      padding: 10px;
+    }
+
+    .lower {
+      background-color: rgb(232, 238, 240);
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+      overflow: auto;
+      margin-top: 20px;
+      height: auto;
+      padding: 10px;
+    }
         nav {
             display: flex;
             height: 80px;
@@ -30,16 +51,16 @@
         }
 
         nav .logo {
-            margin-left: -50px;
-            height: 60px;
-            width: 140px;
-        }
+      margin-left: -50px;
+      /* height: 60px;
+      width: 140px; */
+    }
 
         nav ul {
-            display: flex;
-            flex-wrap: wrap;
-            list-style: none;
-        }
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
 
         nav ul li {
             margin: 0 5px;
@@ -87,17 +108,18 @@
             }
 
             nav ul {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                background: #22196b;
-                height: 53%;
-                width: 100%;
-                text-align: center;
-                display: block;
-                transition: all 0.3s ease;
-                z-index: 1;
-            }
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background: #22196b;
+        height: 53%;
+        width: 100%;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
 
             #click:checked~ul {
                 left: 0;
@@ -138,7 +160,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-image: url(technology-background_23-2148458951.avif);
+            background-image: url(background.png);
             background-repeat: no-repeat;
             background-size: cover;
             height: 100vh;
@@ -186,68 +208,7 @@
             font-weight: 500;
         }
 
-        /* .row {
-            display: flex;
-            flex-wrap: wrap;
-            font-weight: 500;
-            line-height: 1.5;
-            color: #212529;
-            text-align: left;
-            padding-left: 1.25rem;
-            padding-bottom: 1.25rem;
-            margin: 10px;
-        }
 
-        .card h5 {
-            color: gray;
-        } */
-
-
-        /* .card p {
-            line-height: 2px;
-            margin: 20px;
-            display: block;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-            font-size: 18px;
-            color: #212529;
-        } */
-
-        /* .column-left {
-            float: left;
-            display: block;
-            width: 48%;
-        }
-
-        .column-right {
-            float: right;
-            display: block;
-            width: 48%;
-        } */
-
-        /* .social-link li {
-            display: inline-block;
-        }
-
-        .social-link li a {
-            font-size: 20px;
-            margin: 10px
-        } */
-
-        /* .change {
-            color: #fff;
-            background-color: #22196b;
-            margin: 20px;
-            border: 2px solid #22196b;
-            display: inline-block;
-            cursor: pointer;
-            text-decoration: none;
-            border-radius: 10px;
-            padding: 5px 10px;
-            font-size: medium;
-        } */
 
         .left img {
             border-radius: 5px;
@@ -269,39 +230,54 @@
             text-align: center;
         }
 
-            input {
-                margin: 10px;
-                display: block;
-                margin-block-start: 1em;
-                padding: 8px;
-                font-size: 14px;
-                color: #212529;
-                margin-left: 15px;
-            }
+        input {
+            margin: 10px;
+            display: block;
+            margin-block-start: 1em;
+            padding: 8px;
+            font-size: 14px;
+            color: #212529;
+            margin-left: 15px;
+        }
 
-            #update {
-                margin: 15px;
-                display: block;
-                margin-block-start: 1em;
-                padding: 5px;
-                font-size: 14px;
-                color: #fff;
-                background-color: #22196b;
-            }
+        #update {
+            margin: 15px;
+            display: block;
+            margin-block-start: 1em;
+            padding: 5px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #22196b;
+        }
+
+
+        #eye1 {
+            position: absolute;
+            bottom: 40%;
+            right: 25%;
+            color: rgb(135, 151, 185);
+            cursor: pointer;
+        }
+        #eye2{
+            position: absolute;
+            bottom: 27.5%;
+            right: 25%;
+            color: rgb(135, 151, 185);
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
    
       <nav>
-        <img src="techAsia-LOGO_horizontal1028.png" class="logo">
+        <img src="finalLogo.png" class="logo">
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
             <i class="fa fa-fw fa-bars"></i>
         </label>
         <ul>
             <li><a href="http://localhost:3000/user-profile"><i class="fa fa-fw fa-user"></i>Profile</a></li>
-            <li><a href="http://localhost:3000/dashboard"><i class="fa fa-fw fa-calculator"></i>Activity</a></li>
             <li><a href="http://localhost:3000/mydevices"><i class="fa fa-fw fa-mobile"></i>My Devices</a></li>
             <li><a href="http://localhost:3000/graph"><i class="fa fa-fw fa-line-chart"></i>Graphs</a></li>
             <li>
@@ -313,43 +289,30 @@
             </li>
         </ul>
     </nav>
-        <div class="container">
-                <div class="left" align="center">
-                    <img src="logo2.jpg">
-                    <p>TechAsia Mechatronics </p>
-                    <h5>admin</h5>
-                </div>
-
-            <div class="card" align="center">
-                <h class="heading">Update Profile</h>
-                <hr>
-                <form action="/user-changeDetails" method="GET" enctype="text/plain">
-                    <input type="text" placeholder="Name" id="name" />
-                    <input type="email" placeholder="Email" id="email" />
-                    <input type="number" placeholder="Phone Number" id="phone">
-                    <input type="password" placeholder="Password" id="newPassword" />
-                    <input type="password" placeholder="Repeat Password" id="repeatPassword">
-                    <!-- <i class="fa-solid fa-eye" id="eye"></i> -->
-                    <button id="update">
-                        Update
-                    </button>
-                </form>
-            </div>
-            <!-- <div class="links">
-                <ul class="social-link list-unstyled m-t-40 m-b-10">
-                    <li><a href="https://www.facebook.com/techAsiaMechatronics/" target="blank" data-toggle="tooltip"
-                            data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i
-                                class="mdi mdi-facebook feather icon-facebook " aria-hidden="true"></i></a></li>
-                    <li><a onclick="sendMail()" data-toggle="tooltip" target="blank" data-placement="bottom" title=""
-                            data-original-title="email" data-abc="true"><i class="mdi mdi-email feather icon-email "
-                                aria-hidden="true"></i></a></li>
-                    <li><a href="https://techasiamechatronics.com/" data-toggle="tooltip" target="blank"
-                            data-placement="bottom" title="" data-original-title="mdi-internet-explorer"
-                            data-abc="true"><i class="mdi mdi-internet-explorer feather icon-internet explorer "
-                                aria-hidden="true"></i></a></li>
-                </ul>
-            </div> -->
+    <div class="container">
+        <div class="left" align="center">
+            <img src="logo2.jpg">
+            <p>TechAsia Mechatronics </p>
+            <h5>admin</h5>
         </div>
+
+        <div class="card" align="center">
+            <h class="heading">Update Profile</h>
+            <hr>
+            <form action="/user-changeDetails" method="GET" enctype="text/plain">
+                <input type="text" placeholder="Name" id="name" />
+                <input type="email" placeholder="Email" id="email" />
+                <input type="number" placeholder="Phone Number" id="phone">
+                <input type="password" placeholder="Password" id="newPassword" />
+                <i class="fa solid fa-eye" id="eye1"></i>
+                <input type="password" placeholder="Confirm Password" id="repeatPassword">
+                <i class="fa solid fa-eye" id="eye2"></i>
+                <button id="update">
+                    Update
+                </button>
+            </form>
+        </div>
+    </div>
     </div>
 
     <script>
@@ -390,21 +353,34 @@
                             console.error(error);
                         });
                 }
-                else{
+                else {
                     let conf = confirm("Please recheck password");
                 }
             }
 
         });
 
-        const passwordInput = document.querySelector("#password")
-        const eye = document.querySelector("#eye")
-        eye.addEventListener("click", function () {
-            this.classList.toggle("fa-eye-slash")
-            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
-            passwordInput.setAttribute("type", type)
+        const eye1 = document.getElementById('eye1');
+        const passwordInput = document.getElementById('newPassword');
+
+        eye1.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            eye1.classList.toggle('fa-eye');
+            eye1.classList.toggle('fa-eye-slash');
         });
 
+        const eye2 = document.getElementById('eye2');
+        const repeatPasswordInput = document.getElementById('repeatPassword');
+
+        eye2.addEventListener('click', function () {
+            const type = repeatPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            repeatPasswordInput.setAttribute('type', type);
+
+            eye2.classList.toggle('fa-eye');
+            eye2.classList.toggle('fa-eye-slash');
+        });
 
 
     </script>

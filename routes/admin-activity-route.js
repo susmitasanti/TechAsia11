@@ -16,3 +16,4 @@ router.get('/', admin_requireLogin, async function (req, res, next) {
   res.render('D:/TechAsia11/views/admin-activity.ejs', { users: result });
 });
 module.exports = router;
+

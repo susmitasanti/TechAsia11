@@ -28,12 +28,11 @@
             padding: 0 50px 0 100px;
             flex-wrap: wrap;
         }
-
         nav .logo {
-            margin-left: -50px;
-            height: 60px;
-            width: 140px;
-        }
+      margin-left: -50px;
+      /* height: 60px;
+      width: 140px; */
+    }
 
         nav ul {
             display: flex;
@@ -138,7 +137,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-image: url(technology-background_23-2148458951.avif);
+            background-image: url(background.png);
             background-repeat: no-repeat;
             background-size: cover;
             height: 100vh;
@@ -273,14 +272,13 @@
 
 <body>
     <nav>
-        <img src="techAsia-LOGO_horizontal1028.png" class="logo">
+        <img src="finalLogo.png" class="logo">
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
             <i class="fa fa-fw fa-bars"></i>
         </label>
         <ul>
             <li><a href="http://localhost:3000/user-profile"><i class="fa fa-fw fa-user"></i>Profile</a></li>
-            <li><a href="http://localhost:3000/dashboard"><i class="fa fa-fw fa-calculator"></i>Activity</a></li>
             <li><a href="http://localhost:3000/mydevices"><i class="fa fa-fw fa-mobile"></i>My Devices</a></li>
             <li><a href="http://localhost:3000/graph"><i class="fa fa-fw fa-line-chart"></i>Graphs</a></li>
             <li>
@@ -343,7 +341,7 @@
                                 aria-hidden="true"></i></a></li>
                 </ul>
             </div>
-            <a href="http://localhost:3000/user-changeDetails" class="change">Change Details</a>
+            <a href="http://localhost:3000/user-changeDetails" class="change">Edit Profile</a>
         </div>
     </div>
     <script>

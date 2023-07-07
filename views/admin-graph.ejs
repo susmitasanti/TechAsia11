@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Dashboard</title>
+  <title>Admin-Graph</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -29,8 +29,8 @@
 
     nav .logo {
       margin-left: -50px;
-      height: 60px;
-      width: 140px;
+      /* height: 60px;
+      width: 140px; */
     }
 
     nav ul {
@@ -200,10 +200,10 @@
         0 10px 10px rgba(0, 0, 0, 0.22);
       position: relative;
       overflow: auto;
-      margin: 20px;
-      min-height: 310px;
+      margin: 20px 20px 20px 30px;
+      min-height: 210px;
       padding: 10px;
-      width: 500px;
+      width: 420px;
     }
     .row {
       display: flex;
@@ -252,7 +252,7 @@
 
 <body>
   <nav>
-    <img src="techAsia-LOGO_horizontal1028.png" class="logo">
+    <img src="finalLogo.png" class="logo">
     <input type="checkbox" id="click">
     <label for="click" class="menu-btn">
       <i class="fa fa-fw fa-bars"></i>
@@ -326,8 +326,11 @@
                 beginAtZero: true
               },
               y: {
-                beginAtZero: true
-              }
+                min:0,
+                max:1,
+                ticks:{
+                  stepSize:1
+                }              }
             }
           }
         });
